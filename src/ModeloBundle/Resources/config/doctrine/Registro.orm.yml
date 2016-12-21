@@ -1,0 +1,126 @@
+ModeloBundle\Entity\Registro:
+    type: entity
+    table: registro
+    indexes:
+        TJugador_idJugador:
+            columns:
+                - idJugador
+                - idEquipo
+                - idAsociado
+                - idInvitado
+                - IdSocio
+                - idUsuario
+                - idBitacora
+        TJugador_idEquipo:
+            columns:
+                - idEquipo
+        TAsociado_idAsociado:
+            columns:
+                - idAsociado
+        TInvitado_idInvitado:
+            columns:
+                - idInvitado
+        TSocio_IdSocio:
+            columns:
+                - IdSocio
+        TUsuario_idUsuario:
+            columns:
+                - idUsuario
+        TBitacora_idBitacora:
+            columns:
+                - idBitacora
+        IDX_397CA85B42C404EA:
+            columns:
+                - idJugador
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador Registro'
+            id: true
+            column: Id
+            generator:
+                strategy: IDENTITY
+    fields:
+        entrada:
+            type: datetime
+            nullable: false
+            column: Entrada
+        salida:
+            type: datetime
+            nullable: false
+            column: Salida
+    manyToOne:
+        idbitacora:
+            targetEntity: Bitacora
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idBitacora:
+                    referencedColumnName: Id
+            orphanRemoval: false
+        idjugador:
+            targetEntity: Jugador
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idJugador:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idequipo:
+            targetEntity: Equipo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idEquipo:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idasociado:
+            targetEntity: Asociado
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idAsociado:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idinvitado:
+            targetEntity: Invitado
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idInvitado:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idsocio:
+            targetEntity: Socio
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                IdSocio:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idusuario:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idUsuario:
+                    referencedColumnName: idUsuario
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

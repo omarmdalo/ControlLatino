@@ -1,0 +1,45 @@
+ModeloBundle\Entity\Campeonato:
+    type: entity
+    table: campeonato
+    indexes:
+        Tdisciplina_iddisciplina:
+            columns:
+                - iddisciplina
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador Campeonato'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Nombre Campeonato'
+        descripcion:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+                comment: 'Descripcion Campeonato'
+            column: Descripcion
+    manyToOne:
+        iddisciplina:
+            targetEntity: Disciplina
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                iddisciplina:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

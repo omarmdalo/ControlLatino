@@ -1,0 +1,36 @@
+ModeloBundle\Entity\Tipoasociado:
+    type: entity
+    table: tipoasociado
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador tipo Asociados'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'nombre tipo de asociado'
+        descripcion:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'descripcion tipo de asociado'
+        contribuyente:
+            type: string
+            nullable: false
+            length: 5
+            options:
+                fixed: false
+                comment: 'saber si el asociado es contribuyente'
+    lifecycleCallbacks: {  }

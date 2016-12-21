@@ -1,0 +1,44 @@
+ModeloBundle\Entity\Cargo:
+    type: entity
+    table: cargo
+    indexes:
+        TDepartamento_idDepartamento:
+            columns:
+                - idDepartamento
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador Cargo'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Nombre Cargo'
+        descripcion:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+                comment: 'Descripcion Departamento'
+    manyToOne:
+        iddepartamento:
+            targetEntity: Departamento
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idDepartamento:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

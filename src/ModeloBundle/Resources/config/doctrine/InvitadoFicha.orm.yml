@@ -1,0 +1,46 @@
+ModeloBundle\Entity\InvitadoFicha:
+    type: entity
+    table: invitado_ficha
+    indexes:
+        idFicha:
+            columns:
+                - idFicha
+                - idInvitado
+        idInvitado:
+            columns:
+                - idInvitado
+        IDX_AAA34FF5CBA4B7C:
+            columns:
+                - idFicha
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador Asociativa Fucha - Invitado'
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        idficha:
+            targetEntity: Ficha
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idFicha:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idinvitado:
+            targetEntity: Invitado
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idInvitado:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

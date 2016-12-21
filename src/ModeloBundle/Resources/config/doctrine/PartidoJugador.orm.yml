@@ -1,0 +1,46 @@
+ModeloBundle\Entity\PartidoJugador:
+    type: entity
+    table: partido_jugador
+    indexes:
+        idEquipo:
+            columns:
+                - idEquipo
+                - idPartido
+        idPartido:
+            columns:
+                - idPartido
+        IDX_EE1D79EA78DFB91:
+            columns:
+                - idEquipo
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador asociativa Partido Equipo'
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        idequipo:
+            targetEntity: Equipo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idEquipo:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idpartido:
+            targetEntity: Partido
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idPartido:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

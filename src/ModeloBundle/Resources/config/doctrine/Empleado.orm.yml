@@ -1,0 +1,72 @@
+ModeloBundle\Entity\Empleado:
+    type: entity
+    table: empleado
+    indexes:
+        TDepartamento_idDepartamento:
+            columns:
+                - idDepartamento
+                - idCargo
+        idCargo:
+            columns:
+                - idCargo
+        IDX_D9D9BF521E7A331A:
+            columns:
+                - idDepartamento
+    uniqueConstraints:
+        cedula:
+            columns:
+                - cedula
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador empleado'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombres:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Nombres empleado'
+        apellidos:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Apellido Empleado'
+        cedula:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Cedula Empleado'
+    manyToOne:
+        iddepartamento:
+            targetEntity: Departamento
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idDepartamento:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idcargo:
+            targetEntity: Cargo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idCargo:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

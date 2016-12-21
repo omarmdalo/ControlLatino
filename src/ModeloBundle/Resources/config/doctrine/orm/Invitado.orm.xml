@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Invitado" table="invitado">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombres" type="string" column="nombres" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Nombres Invitado</option>
+      </options>
+    </field>
+    <field name="apellidos" type="string" column="Apellidos" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Apelldos Invitado</option>
+      </options>
+    </field>
+    <field name="ceula" type="string" column="Ceula" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Cedula Identidad Invitados</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

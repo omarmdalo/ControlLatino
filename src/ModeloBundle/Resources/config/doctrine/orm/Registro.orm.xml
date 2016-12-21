@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Registro" table="registro">
+    <indexes>
+      <index name="TJugador_idJugador" columns="idJugador,idEquipo,idAsociado,idInvitado,IdSocio,idUsuario,idBitacora"/>
+      <index name="TJugador_idEquipo" columns="idEquipo"/>
+      <index name="TAsociado_idAsociado" columns="idAsociado"/>
+      <index name="TInvitado_idInvitado" columns="idInvitado"/>
+      <index name="TSocio_IdSocio" columns="IdSocio"/>
+      <index name="TUsuario_idUsuario" columns="idUsuario"/>
+      <index name="TBitacora_idBitacora" columns="idBitacora"/>
+      <index name="IDX_397CA85B42C404EA" columns="idJugador"/>
+    </indexes>
+    <id name="id" type="integer" column="Id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="entrada" type="datetime" column="Entrada" nullable="false"/>
+    <field name="salida" type="datetime" column="Salida" nullable="false"/>
+    <many-to-one field="idsocio" target-entity="Socio" fetch="LAZY">
+      <join-columns>
+        <join-column name="IdSocio" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idusuario" target-entity="Usuario" fetch="LAZY">
+      <join-columns>
+        <join-column name="idUsuario" referenced-column-name="idUsuario"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idinvitado" target-entity="Invitado" fetch="LAZY">
+      <join-columns>
+        <join-column name="idInvitado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idasociado" target-entity="Asociado" fetch="LAZY">
+      <join-columns>
+        <join-column name="idAsociado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idjugador" target-entity="Jugador" fetch="LAZY">
+      <join-columns>
+        <join-column name="idJugador" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idequipo" target-entity="Equipo" fetch="LAZY">
+      <join-columns>
+        <join-column name="idEquipo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idbitacora" target-entity="Bitacora" fetch="LAZY">
+      <join-columns>
+        <join-column name="idBitacora" referenced-column-name="Id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

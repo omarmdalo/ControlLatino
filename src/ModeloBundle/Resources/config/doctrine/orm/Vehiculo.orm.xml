@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Vehiculo" table="vehiculo">
+    <indexes>
+      <index name="TSocio_IdSocio" columns="IdSocio"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="Placa" columns="Placa"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="modelo" type="string" column="modelo" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Modelo del Vehiculo</option>
+      </options>
+    </field>
+    <field name="marca" type="string" column="marca" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Marca del Vehiculo</option>
+      </options>
+    </field>
+    <field name="placa" type="string" column="Placa" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Placa del Vehiculo</option>
+      </options>
+    </field>
+    <many-to-one field="idsocio" target-entity="Socio" fetch="LAZY">
+      <join-columns>
+        <join-column name="IdSocio" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

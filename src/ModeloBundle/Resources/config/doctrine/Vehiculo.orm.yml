@@ -1,0 +1,56 @@
+ModeloBundle\Entity\Vehiculo:
+    type: entity
+    table: vehiculo
+    indexes:
+        TSocio_IdSocio:
+            columns:
+                - IdSocio
+    uniqueConstraints:
+        Placa:
+            columns:
+                - Placa
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador Vehiculo'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        modelo:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+                comment: 'Modelo del Vehiculo'
+        marca:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+                comment: 'Marca del Vehiculo'
+        placa:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+                comment: 'Placa del Vehiculo'
+            column: Placa
+    manyToOne:
+        idsocio:
+            targetEntity: Socio
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                IdSocio:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

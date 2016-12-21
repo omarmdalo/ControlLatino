@@ -1,0 +1,77 @@
+ModeloBundle\Entity\Asociado:
+    type: entity
+    table: asociado
+    indexes:
+        TSocios_idSocio:
+            columns:
+                - idSocio
+                - idTipoAsociado
+        TTipoaAsociado_idTipoAsociado:
+            columns:
+                - idTipoAsociado
+        IDX_5074CE1C2F721014:
+            columns:
+                - idSocio
+    uniqueConstraints:
+        cedula:
+            columns:
+                - cedula
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador Asociado'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombres:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Nombres Asociado'
+        apellidos:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Apellido Asociado'
+        cedula:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+                comment: 'Cedula identidad asociado'
+        fecha:
+            type: date
+            nullable: false
+            options:
+                comment: 'Fecha registro Asociado'
+    manyToOne:
+        idsocio:
+            targetEntity: Socio
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idSocio:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idtipoasociado:
+            targetEntity: Tipoasociado
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idTipoAsociado:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

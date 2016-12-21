@@ -1,0 +1,61 @@
+login:
+    path: /login
+    defaults: { _controller: ModeloBundle:User:login }
+    
+login_check:
+    path: /login_check
+    
+logout:
+    path: /logout
+
+modelo_homepage:
+    path:     /
+    defaults: { _controller: ModeloBundle:Default:index }
+    
+socio_add:    
+    path:     /socio/add
+    defaults: { _controller: ModeloBundle:Socio:addSocio }
+
+socios:    
+    path:     /socio
+    defaults: { _controller: ModeloBundle:Socio:index }
+   
+socio_delete:
+    path:     /socio/delete/{id}
+    defaults: { _controller: ModeloBundle:Socio:deleteSocio }
+    
+socio_update:
+    path:     /socio/update/{id}
+    defaults: { _controller: ModeloBundle:Socio:updateSocio }   
+    
+asociados:    
+    path:     /asociado
+    defaults: { _controller: ModeloBundle:Asociado:index }
+
+asociado_add:    
+    path:     /asociado/add
+    defaults: { _controller: ModeloBundle:Asociado:addAsociado }
+
+asociado_update:
+    path:     /asociado/update/{id}
+    defaults: { _controller: ModeloBundle:Asociado:updateAsociado } 
+    
+asociado_delete:
+    path:     /asociado/delete/{id}
+    defaults: { _controller: ModeloBundle:Asociado:deleteAsociado }
+    
+fichas:    
+    path:     /ficha
+    defaults: { _controller: ModeloBundle:Ficha:index }
+
+ficha_add:    
+    path:     /ficha/add
+    defaults: { _controller: ModeloBundle:Ficha:addFicha }
+
+ficha_update:
+    path:     /ficha/update/{id}
+    defaults: { _controller: ModeloBundle:Ficha:updateFicha } 
+    
+ficha_delete:
+    path:     /ficha/delete/{id}
+    defaults: { _controller: ModeloBundle:Ficha:deleteFicha }

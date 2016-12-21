@@ -1,0 +1,52 @@
+{% extends "ModeloBundle::layout.html.twig" %}
+{% block content %}
+
+    {% if is_granted('ROLE_USER') %}
+        <strong>
+            Estas logueado como ADMINISTRACION
+        <strong>
+    {% endif %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <strong>
+            Estas logueado como ADMINISTRADOR
+        <strong>
+    {% endif %}
+    {% if is_granted('ROLE_GUARD') %}
+        <strong>
+            Estas logueado como VIGILANCIA
+        <strong>
+    {% endif %}
+
+                    <div class="col-lg-4">
+                        <h2>Identificate</h2>
+                        <hr/>
+                        <form action="{{path("login_check")}}" method="post">
+                            <label>Email:</label>
+                            <input type="email" id="username" name="_username" value="{{ last_username }}" class="form-control"></input>
+                            <br/>
+                            <label>Contraseña:</label>
+                            <input type="password" id="password" name="_password" class="form-control"></input>
+                            <br/>
+                            <input type="submit" value="Entrar" class="btn btn-success"></input>
+                            <input type="hidden" name="_target_path" value="/login"></input>
+                        </form>
+                    </div>
+
+
+                    <div class="col-lg-4">
+                        <h2>Registrate</h2>
+                        <hr/>
+
+                            {% for message in app.session.flashbag().get('status') %}
+                                <div class="alert alert-danger">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+  
+                        {{form_start(form,{'action':'','method':'POST'})}}
+                        {{form_end(form)}}
+                    </div>
+
+                    <div class="clearfix"></div>
+                {% endblock %}

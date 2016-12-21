@@ -1,0 +1,86 @@
+ModeloBundle\Entity\Socio:
+    type: entity
+    table: socio
+    indexes:
+        TTipoSocio_idTipoSocio:
+            columns:
+                - idTipoSocio
+    uniqueConstraints:
+        cedula:
+            columns:
+                - cedula
+                - accion
+        rif:
+            columns:
+                - rif
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador Socio'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombres:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Nombre del Socio'
+        apellidos:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Apellidos del Socio'
+        cedula:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+                comment: 'Cedula identidad Socio'
+        razonSocial:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                comment: 'Nombre Empresa'
+            column: razon_social
+        rif:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+                comment: 'Registro de Informacion fiscal'
+        fecha:
+            type: date
+            nullable: false
+            options:
+                comment: 'Fecha compra accion del socio'
+        accion:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+                comment: 'Numero de accion del Socio'
+    manyToOne:
+        idtiposocio:
+            targetEntity: Tiposocio
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idTipoSocio:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

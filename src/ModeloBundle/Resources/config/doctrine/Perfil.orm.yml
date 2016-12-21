@@ -1,0 +1,29 @@
+ModeloBundle\Entity\Perfil:
+    type: entity
+    table: perfil
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador Perfil'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'nombre del perfil'
+        descripcion:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+                comment: 'descripcion del perfil'
+    lifecycleCallbacks: {  }

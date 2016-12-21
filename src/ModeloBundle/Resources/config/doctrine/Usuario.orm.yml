@@ -1,0 +1,61 @@
+ModeloBundle\Entity\Usuario:
+    type: entity
+    table: usuario
+    indexes:
+        TEmpleado_idEmpleado:
+            columns:
+                - idEmpleado
+    uniqueConstraints:
+        nombre:
+            columns:
+                - nombre
+    id:
+        idusuario:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idUsuario
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+        role:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+        password:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        caducidad:
+            type: date
+            nullable: false
+    manyToOne:
+        idempleado:
+            targetEntity: Empleado
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idEmpleado:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

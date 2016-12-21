@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Socio" table="socio">
+    <indexes>
+      <index name="TTipoSocio_idTipoSocio" columns="idTipoSocio"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="cedula" columns="cedula,accion"/>
+      <unique-constraint name="rif" columns="rif"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombres" type="string" column="nombres" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Nombre del Socio</option>
+      </options>
+    </field>
+    <field name="apellidos" type="string" column="apellidos" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Apellidos del Socio</option>
+      </options>
+    </field>
+    <field name="cedula" type="string" column="cedula" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Cedula identidad Socio</option>
+      </options>
+    </field>
+    <field name="razonSocial" type="string" column="razon_social" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Nombre Empresa</option>
+      </options>
+    </field>
+    <field name="rif" type="string" column="rif" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Registro de Informacion fiscal</option>
+      </options>
+    </field>
+    <field name="fecha" type="date" column="fecha" nullable="false">
+      <options>
+        <option name="comment">Fecha compra accion del socio</option>
+      </options>
+    </field>
+    <field name="accion" type="string" column="accion" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Numero de accion del Socio</option>
+      </options>
+    </field>
+    <many-to-one field="idtiposocio" target-entity="Tiposocio" fetch="LAZY">
+      <join-columns>
+        <join-column name="idTipoSocio" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,52 @@
+{% extends "ModeloBundle::layout.html.twig" %}
+{% block content %}
+    <div class="col-lg-6">
+        <h2> Asociados </h2>
+        <hr/>
+        <a href="{{path("asociado_add")}}" class="btn btn-success btn-lg">
+            <span class="glyphicon glyphicon-plus"></span> 
+        </a>
+        <a href="#" class="btn btn-success btn-lg">
+            <span class="glyphicon glyphicon-print"></span> Print 
+        </a>
+        <hr/>
+        {% for message in app.session.flashbag().get('status') %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}  
+        
+        <table class="table table-striped">
+            <tr>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Cedula</th>
+                <th>Accion</th>
+                <th>Tipo</th>            
+                <th>Editar</th>
+                <th>Eliminar</th>                   
+            </tr>    
+        {% for asociado in asociados %}
+            <tr>
+                <td>{{ asociado.nombres }} </td>
+                <td>{{ asociado.apellidos }} </td>
+                <td>{{ asociado.cedula }} </td>
+                <td>{{ asociado.idsocio.accion }} </td>
+                <td>{{ asociado.idtipoasociado.nombre }} </td>              
+                <td> 
+                    <a href="{{path("asociado_update",{"id":asociado.id})}}">
+                        <span class="glyphicon glyphicon-pencil"></span> 
+                    </a>
+                </td>
+                <td>
+                     <a href="{{path("asociado_delete",{"id":asociado.id})}}">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>  
+
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    <div class="clearfix"></div>    
+{% endblock %}

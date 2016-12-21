@@ -1,0 +1,29 @@
+ModeloBundle\Entity\Bitacora:
+    type: entity
+    table: bitacora
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: Id
+            generator:
+                strategy: IDENTITY
+    fields:
+        descripcion:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        fechaInicio:
+            type: date
+            nullable: false
+            column: fecha_inicio
+        fechaFin:
+            type: date
+            nullable: false
+            column: fecha_fin
+    lifecycleCallbacks: {  }

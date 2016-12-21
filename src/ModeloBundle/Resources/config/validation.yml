@@ -1,0 +1,15 @@
+ModeloBundle\Entity\Socio:
+    properties:
+        nombres:
+            - NotBlank: {message: "El nombre no puede estar vacio"}
+            - Length:
+                min: 2
+                minMessage: "El nombre tiene que tener mas de 2 caracteres"
+                
+ModeloBundle\Entity\Asociado:
+    properties:
+        nombres:
+            - NotBlank: {message: "El nombre no puede estar vacio"}
+            - Length:
+                min: 2
+                minMessage: "El nombre tiene que tener mas de 2 caracteres"

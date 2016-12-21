@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Empleado" table="empleado">
+    <indexes>
+      <index name="TDepartamento_idDepartamento" columns="idDepartamento,idCargo"/>
+      <index name="idCargo" columns="idCargo"/>
+      <index name="IDX_D9D9BF521E7A331A" columns="idDepartamento"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="cedula" columns="cedula"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombres" type="string" column="nombres" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Nombres empleado</option>
+      </options>
+    </field>
+    <field name="apellidos" type="string" column="apellidos" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Apellido Empleado</option>
+      </options>
+    </field>
+    <field name="cedula" type="string" column="cedula" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Cedula Empleado</option>
+      </options>
+    </field>
+    <many-to-one field="idcargo" target-entity="Cargo" fetch="LAZY">
+      <join-columns>
+        <join-column name="idCargo" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="iddepartamento" target-entity="Departamento" fetch="LAZY">
+      <join-columns>
+        <join-column name="idDepartamento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

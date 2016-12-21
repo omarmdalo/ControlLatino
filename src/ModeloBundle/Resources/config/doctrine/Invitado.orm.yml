@@ -1,0 +1,38 @@
+ModeloBundle\Entity\Invitado:
+    type: entity
+    table: invitado
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador Invitado'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombres:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Nombres Invitado'
+        apellidos:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Apelldos Invitado'
+            column: Apellidos
+        ceula:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+                comment: 'Cedula Identidad Invitados'
+            column: Ceula
+    lifecycleCallbacks: {  }

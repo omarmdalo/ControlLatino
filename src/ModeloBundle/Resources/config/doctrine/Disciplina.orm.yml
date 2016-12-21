@@ -1,0 +1,36 @@
+ModeloBundle\Entity\Disciplina:
+    type: entity
+    table: disciplina
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador Disciplina'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Nombre de la disciplina'
+        descripcion:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+                comment: 'Descripcion de la disciplina'
+        lugar:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Lugar donde se juega la disciplina'
+    lifecycleCallbacks: {  }

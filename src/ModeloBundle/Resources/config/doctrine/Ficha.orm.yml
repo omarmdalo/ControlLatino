@@ -1,0 +1,60 @@
+ModeloBundle\Entity\Ficha:
+    type: entity
+    table: ficha
+    repositoryClass: ModeloBundle\Repository\FichaRepository
+    indexes:
+        TUsuario_idUsuario:
+            columns:
+                - idUsuario
+                - IdSocio
+        IdSocio:
+            columns:
+                - IdSocio
+        IDX_4B7E086132DCDBAF:
+            columns:
+                - idUsuario
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador ficha'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        motivo:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+                comment: 'Motivo de Ingreso Invitados'
+        fecha:
+            type: date
+            nullable: false
+            options:
+                comment: 'fecha de registro de ficha'
+    manyToOne:
+        idusuario:
+            targetEntity: Usuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idUsuario:
+                    referencedColumnName: idUsuario
+            orphanRemoval: false
+        idsocio:
+            targetEntity: Socio
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                IdSocio:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

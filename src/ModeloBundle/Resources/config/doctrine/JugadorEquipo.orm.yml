@@ -1,0 +1,69 @@
+ModeloBundle\Entity\JugadorEquipo:
+    type: entity
+    table: jugador_equipo
+    indexes:
+        TEquipo_idEquipo:
+            columns:
+                - idEquipo
+                - idAsociado
+                - idSocio
+                - idJugador
+        idAsociado:
+            columns:
+                - idAsociado
+        idSocio:
+            columns:
+                - idSocio
+        idJugador:
+            columns:
+                - idJugador
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador asociativa jugador equipo'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idequipo:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Relacion con Equipo'
+            column: idEquipo
+    manyToOne:
+        idasociado:
+            targetEntity: Asociado
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idAsociado:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idsocio:
+            targetEntity: Socio
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idSocio:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idjugador:
+            targetEntity: Jugador
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idJugador:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

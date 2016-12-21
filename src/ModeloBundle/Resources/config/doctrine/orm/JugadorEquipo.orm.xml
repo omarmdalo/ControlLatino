@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="JugadorEquipo" table="jugador_equipo">
+    <indexes>
+      <index name="TEquipo_idEquipo" columns="idEquipo,idAsociado,idSocio,idJugador"/>
+      <index name="idAsociado" columns="idAsociado"/>
+      <index name="idSocio" columns="idSocio"/>
+      <index name="idJugador" columns="idJugador"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idequipo" type="integer" column="idEquipo" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Relacion con Equipo</option>
+      </options>
+    </field>
+    <many-to-one field="idjugador" target-entity="Jugador" fetch="LAZY">
+      <join-columns>
+        <join-column name="idJugador" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idsocio" target-entity="Socio" fetch="LAZY">
+      <join-columns>
+        <join-column name="idSocio" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idasociado" target-entity="Asociado" fetch="LAZY">
+      <join-columns>
+        <join-column name="idAsociado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

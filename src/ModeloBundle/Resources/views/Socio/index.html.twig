@@ -1,0 +1,44 @@
+{% extends "ModeloBundle::layout.html.twig" %}
+{% block content %}
+    <div class="col-lg-6">
+        <h2> Socios </h2>
+        <hr/>
+        <a href="{{path("socio_add")}}" class="btn btn-success btn-lg">
+            <span class="glyphicon glyphicon-plus"></span> 
+        </a>
+        <a href="#" class="btn btn-success btn-lg">
+            <span class="glyphicon glyphicon-print"></span> Print 
+        </a>
+        <hr/>
+        <table class="table table-striped">
+            <tr>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Cedula</th>
+                <th>Accion</th>
+                <th>Editar</th>
+                <th>Eliminar</th>                   
+            </tr>    
+        {% for socio in socios %}
+            <tr>
+                <td>{{ socio.nombres }} </td>
+                <td>{{ socio.apellidos }} </td>
+                <td>{{ socio.cedula }} </td>
+                <td>{{ socio.accion }} </td>
+                <td> 
+                    <a href="{{path("socio_update",{"id":socio.id})}}">
+                        <span class="glyphicon glyphicon-pencil"></span> 
+                    </a>
+                </td>
+                <td>
+                     <a href="{{path("socio_delete",{"id":socio.id})}}">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>  
+
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+    <div class="clearfix"></div>    
+{% endblock %}

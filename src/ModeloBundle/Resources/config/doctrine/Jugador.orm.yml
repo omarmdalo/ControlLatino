@@ -1,0 +1,40 @@
+ModeloBundle\Entity\Jugador:
+    type: entity
+    table: jugador
+    uniqueConstraints:
+        cedula:
+            columns:
+                - cedula
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador Jugador'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombres:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Nombres jugador'
+        apellidos:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Apellidos Jugador'
+        cedula:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+                comment: 'Cedula Identidad Jugador'
+    lifecycleCallbacks: {  }
