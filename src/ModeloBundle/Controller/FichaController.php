@@ -120,7 +120,7 @@ class FichaController extends Controller {
             $arrayInvi .= $invi->getIdinvitado()->getApellidos();
             $arrayInvi .= " ";
             $arrayInvi .= $invi->getIdinvitado()->getCeula();
-            $arrayInvi .= ",";
+            $arrayInvi .= "/";
         } 
         
         

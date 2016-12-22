@@ -20,7 +20,7 @@ class FichaRepository  extends \Doctrine\ORM\EntityRepository {
                    "idusuario"=>$user       
                 ));
             }
-        //var_dump($invitados);   
+        //var_dump($invitados);
         $invitados = explode("/",$invitados);
         $invitados_repo = $em->getRepository("ModeloBundle:Invitado");
         //var_dump($invitados); 
