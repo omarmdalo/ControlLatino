@@ -17,11 +17,11 @@ class FichaController extends Controller {
     public function __construct() {
         $this->session = new Session();
     }
-    public function indexAction(){
+    public function indexAction($page){
     $fichas = new Ficha();
     $em = $this->getDoctrine()->getEntityManager();
     $ficha_repo = $em->getRepository("ModeloBundle:Ficha");
-    $fichas = $ficha_repo->findAll();
+    $fichas = $ficha_repo->getPaginateEntries(3,$page);
     return $this->render("ModeloBundle:Ficha:index.html.twig", array(
                     "fichas" => $fichas
         ));

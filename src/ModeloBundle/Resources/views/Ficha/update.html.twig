@@ -3,8 +3,8 @@
     <div class="col-lg-6">
         <h2> Editar Ficha: {{ ficha.motivo }} </h2>         
         {{form_start(form, {'enctype':'multipart/form-data'})}}
-            <label>Invitados:</label>
-            {{form_widget(form.invitados,{'value':invitados})}}
+
+        {{form_widget(form.invitados,{'value':invitados|trim("/")})}}
         {{form_end(form)}}
     </div>
     <div class="clearfix"></div>    

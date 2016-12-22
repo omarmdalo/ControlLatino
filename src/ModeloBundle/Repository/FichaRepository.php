@@ -4,6 +4,7 @@ namespace ModeloBundle\Repository;
 
 use ModeloBundle\Entity\Invitado;
 use ModeloBundle\Entity\InvitadoFicha;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class FichaRepository  extends \Doctrine\ORM\EntityRepository {
     
@@ -49,6 +50,19 @@ class FichaRepository  extends \Doctrine\ORM\EntityRepository {
         
         $flush = $em->flush();
         return $flush;
+    }
+    
+    public function getPaginateEntries($pageSize=5, $currentPage=1){
+        $em = $this->getEntityManager();
+        
+        $dql = "SELECT e FROM ModeloBundle\Entity\Ficha e ORDER BY e.id DESC";
+        $query= $em->createQuery($dql)
+                    ->setFirstResult($pageSize*($currentPage-1))
+                    ->setMaxResults($pageSize);
+        
+        $paginator = new Paginator($query, $fetchJoinCollection = true);
+        
+        return $paginator;
     }
     
 }

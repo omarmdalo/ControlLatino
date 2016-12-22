@@ -45,8 +45,8 @@ asociado_delete:
     defaults: { _controller: ModeloBundle:Asociado:deleteAsociado }
     
 fichas:    
-    path:     /ficha
-    defaults: { _controller: ModeloBundle:Ficha:index }
+    path:     /ficha/{page}
+    defaults: { _controller: ModeloBundle:Ficha:index, page:1 }
 
 ficha_add:    
     path:     /ficha/add
