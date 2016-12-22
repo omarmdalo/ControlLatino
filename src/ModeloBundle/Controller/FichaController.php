@@ -29,7 +29,9 @@ class FichaController extends Controller {
     return $this->render("ModeloBundle:Ficha:index.html.twig", array(
                     "fichas" => $fichas,
                     "totalItems" => $totalItems,
-                    "pagesCount" => $pageCount
+                    "pagesCount" => $pageCount,
+                    "page" => $page,
+                    "page_m" => $page
         
         ));
     }
