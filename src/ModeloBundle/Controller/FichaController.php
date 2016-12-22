@@ -19,11 +19,18 @@ class FichaController extends Controller {
     }
     public function indexAction($page){
     $fichas = new Ficha();
+    $pageSize = 5;
     $em = $this->getDoctrine()->getEntityManager();
     $ficha_repo = $em->getRepository("ModeloBundle:Ficha");
-    $fichas = $ficha_repo->getPaginateEntries(3,$page);
+    $fichas = $ficha_repo->getPaginateEntries($pageSize,$page);
+    
+    $totalItems = count($fichas);
+    $pageCount = ceil($totalItems / $pageSize);
     return $this->render("ModeloBundle:Ficha:index.html.twig", array(
-                    "fichas" => $fichas
+                    "fichas" => $fichas,
+                    "totalItems" => $totalItems,
+                    "pagesCount" => $pageCount
+        
         ));
     }
     

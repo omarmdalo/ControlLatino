@@ -41,8 +41,16 @@
 
                 </td>
             </tr>
-        {% endfor %}
+        {% endfor %}      
         </table>
+        
+        <ul class="pagination">
+            <li href="#">&laquo;</li>
+            {% for i in 1..pagesCount %}
+            <li><a href="{{path('fichas',{"page":i})}}">{{i}}</a></li>
+            {% endfor %}
+            <li href="#">&raquo;</li>
+        </ul>
     </div>
     <div class="clearfix"></div>    
 {% endblock %}
