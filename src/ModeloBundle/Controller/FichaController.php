@@ -89,7 +89,13 @@ class FichaController extends Controller {
         $invitado_ficha_repo = $em->getRepository("ModeloBundle:InvitadoFicha");
         $invitado_ficha = $invitado_ficha_repo->findBy(array("idficha"=>$ficha));
         
-        
+        foreach ( $invitado_ficha as $invitado){
+            if(is_object($invitado)){
+                $em->remove($invitado);
+                $em->flush();
+            }
+        }
+                
         $em->remove($ficha);
         $em->flush();
         return $this->redirectToRoute("fichas");
@@ -98,32 +104,56 @@ class FichaController extends Controller {
     public function updateFichaAction(Request $request, $id){
         $em = $this->getDoctrine()->getEntityManager();
         $ficha_repo = $em->getRepository("ModeloBundle:Ficha");
-        $ficha = $ficha_repo->find($id);
+        $invitadoficha_repo = $em->getRepository("ModeloBundle:InvitadoFicha"); 
+        
+        //Solicitamos Informacion de la Ficha a la BD
+        $ficha = $ficha_repo->find($id); 
+        
+        //Solicitamos los Invitados de la ficha a la BD
+        $invitados=$invitadoficha_repo->findBy(array("idficha"=>$id));   
+        
+        $arrayInvi="";
+        
+        foreach ($invitados as $invi){
+            $arrayInvi .= $invi->getIdinvitado()->getNombres();
+            $arrayInvi .= " ";
+            $arrayInvi .= $invi->getIdinvitado()->getApellidos();
+            $arrayInvi .= " ";
+            $arrayInvi .= $invi->getIdinvitado()->getCeula();
+            $arrayInvi .= ",";
+        } 
+        
         
         $form = $this->createForm(FichaType::class, $ficha);
         $form->handleRequest($request);
         
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                $ficha = new Ficha();
-                $em = $this->getDoctrine()->getEntityManager();
-
                 
                 //Extraer data de formulario
                 $ficha->setMotivo($form->get("motivo")->getData());
-                //$ficha->setFecha($form->get("fecha")->getData());
-                $ficha->setFecha(new \DateTime("now"));
+
                 //Extraemos Usuario Activo
                 $user=$this->getUser();
                 $ficha->setIdusuario($user);
                 
+                $ficha->setFecha(new \DateTime("now"));
+                
                 $ficha->setIdsocio($form->get("idsocio")->getData());               
                 //Insertamos la ficha
-                $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($ficha);
                 $flush = $em->flush();
                 
-                $ficha_repo = $em->getRepository("ModeloBundle:Ficha");
+ 
+                $invitado_ficha = $invitadoficha_repo->findBy(array("idficha"=>$id));
+        
+                foreach ( $invitado_ficha as $invitado){
+                    if(is_object($invitado)){
+                    $em->remove($invitado);
+                    $em->flush();
+                    }
+                }
+                
                 $ficha_repo->saveFichaInvitados(
                         $form->get("invitados")->getData(),
                         $form->get("motivo")->getData(),
@@ -132,9 +162,9 @@ class FichaController extends Controller {
                         );
                               
                 if ($flush == null) {
-                    $status = "Ficha creada correctamente";
+                    $status = "Ficha actualizada";
                 } else {
-                    $status = "Ficha no se registro correctamente";
+                    $status = "Ficha no se pudo actualizar";
                 }               
             } else {
                 $status = "Formulario Incorrecto";
@@ -143,7 +173,10 @@ class FichaController extends Controller {
             return $this->redirectToRoute("fichas");
         }      
                 return $this->render("ModeloBundle:Ficha:update.html.twig", array(
-                    "form" => $form->createView()
+                    "form" => $form->createView(),
+                    "ficha"=>$ficha,
+                    "invitados"=>$arrayInvi
+                    
         ));
 
         //return $this->redirectToRoute("asociados");

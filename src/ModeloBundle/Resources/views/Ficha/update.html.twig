@@ -1,8 +1,10 @@
 {% extends "ModeloBundle::layout.html.twig" %}
 {% block content %}
     <div class="col-lg-6">
-        <h2> Editar Ficha </h2>         
-        {{form_start(form)}}
+        <h2> Editar Ficha: {{ ficha.motivo }} </h2>         
+        {{form_start(form, {'enctype':'multipart/form-data'})}}
+            <label>Invitados:</label>
+            {{form_widget(form.invitados,{'value':invitados})}}
         {{form_end(form)}}
     </div>
     <div class="clearfix"></div>    
