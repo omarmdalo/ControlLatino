@@ -1,9 +1,6 @@
 <?php
-
 namespace ModeloBundle\Controller;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 class DefaultController extends Controller
 {
     public function holaAction()
@@ -19,7 +16,6 @@ class DefaultController extends Controller
 //            echo $usuario->getIdtiposocio()->getNombre()."<br/>";
 //            echo $usuario->getIdtiposocio()->getDescripcion()."<br/>";
 //            echo "<hr/>";
-
             $asociados = $socio->getAsociado();
             foreach ($asociados as $asociado){
                 echo $asociado->getNombres()." ".$asociado->getApellidos()."<br/>";
@@ -33,7 +29,6 @@ class DefaultController extends Controller
     
         public function indexAction()
     {
-
         
         return $this->render('ModeloBundle:Default:index.html.twig');
     }
