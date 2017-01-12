@@ -46,7 +46,7 @@ ModeloBundle\Entity\Usuario:
                 fixed: false
         caducidad:
             type: date
-            nullable: false
+            nullable: true
     manyToOne:
         idempleado:
             targetEntity: Empleado

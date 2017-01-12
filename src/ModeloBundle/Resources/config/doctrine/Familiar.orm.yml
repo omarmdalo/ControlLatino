@@ -1,0 +1,100 @@
+ModeloBundle\Entity\Familiar:
+    type: entity
+    table: familiar
+    indexes:
+        idSocio:
+            columns:
+                - idSocio
+                - idAsociado
+        idTipofamiliar:
+            columns:
+                - idTipofamiliar
+        idAsociado:
+            columns:
+                - idAsociado
+        IDX_8A34CA5E2F721014:
+            columns:
+                - idSocio
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Identificador Familiar'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombres:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Nombres Familiar'
+        apellidos:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+                comment: 'Apellidos Familiar'
+        cedula:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+                comment: Cedula
+        fecha:
+            type: date
+            nullable: false
+            options:
+                comment: 'Fecha de Ingreso'
+        imagen:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: 'Ruta de Imagen'
+        codigo:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+                comment: 'Codigo de Barras'
+    manyToOne:
+        idsocio:
+            targetEntity: Socio
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idSocio:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idasociado:
+            targetEntity: Asociado
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idAsociado:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idtipofamiliar:
+            targetEntity: Tipofamiliar
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idTipofamiliar:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

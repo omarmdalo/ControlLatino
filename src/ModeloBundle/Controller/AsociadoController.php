@@ -28,6 +28,7 @@ class AsociadoController extends Controller {
                     "asociados" => $asociados
         ));
     }
+    
     public function addAsociadoAction(Request $request) {
 
         $asociado = new Asociado();
@@ -39,15 +40,38 @@ class AsociadoController extends Controller {
                 $em = $this->getDoctrine()->getEntityManager();
                 $asociado_repo = $em->getRepository("ModeloBundle:Asociado");
                 $asociado = $asociado_repo->findOneBy(array("cedula" => $form->get("cedula")->getData()));
+                $num_aso = 0;
+                $codigo="";
+                $num_aso = $asociado_repo->findAll();
                 if (count($asociado) == 0) {
                     $asociado = new Asociado();
                     //Extraer data de formulario
                     $asociado->setNombres($form->get("nombres")->getData());
                     $asociado->setApellidos($form->get("apellidos")->getData());
                     $asociado->setCedula($form->get("cedula")->getData());
-                    $asociado->setFecha($form->get("fecha")->getData());
+                    $asociado->setFecha(new \DateTime("now"));
+                    
+                    //Generamos Codigo de Barras (Repositorio Asociados)                 
+                    $codigo=$asociado_repo->GenerarCodigo($form->get("idsocio")->getData());
+                    
+                    $asociado->setCodigo($codigo);
+                    
+                    $asociado->setSolvente($form->get("solvente")->getData());
+                    $asociado->setNumasociado((count($num_aso))+1);
+                    
+                    //subida de imagen
+                    $file=$form["imagen"]->getData();
+                    if(!empty($file) && $file!=null){
+                    $file=$form["imagen"]->getData();
+                    $ext=$file->guessExtension();
+                    $file_name=$form->get("cedula")->getData().time().".".$ext;
+                    $file->move("uploads",$file_name);                    
+                    $asociado->setImagen($file_name);
+                    }else
+                        {
+                        $asociado->setImagen(null);
+                        }
                     $asociado->setIdsocio($form->get("idsocio")->getData());
-                    $asociado->setIdtipoasociado($form->get("idtipoasociado")->getData());
                     
                     $em = $this->getDoctrine()->getEntityManager();
                     $em->persist($asociado);
@@ -90,20 +114,35 @@ class AsociadoController extends Controller {
         $asociado_repo = $em->getRepository("ModeloBundle:Asociado");
         $asociado = $asociado_repo->find($id);
         
+        $per_imagen= $asociado->getImagen();
+        
+        
         $form = $this->createForm(AsociadoType::class, $asociado);
         $form->handleRequest($request);
         
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                     
-                    //Extraer data de formulario
+                
                     $asociado->setNombres($form->get("nombres")->getData());
                     $asociado->setApellidos($form->get("apellidos")->getData());
                     $asociado->setCedula($form->get("cedula")->getData());
-                    $asociado->setFecha($form->get("fecha")->getData());
-                    $asociado->setIdsocio($form->get("idsocio")->getData());
-                    $asociado->setIdtipoasociado($form->get("idtipoasociado")->getData());
+                                       
+                    $asociado->setSolvente($form->get("solvente")->getData());
                     
+                    //subida de imagen
+                    $file=$form["imagen"]->getData();
+                    if(!empty($file) && $file!=null){
+                        $file=$form["imagen"]->getData();
+                        $ext=$file->guessExtension();
+                        $file_name=$form->get("cedula")->getData().time().".".$ext;
+                        $file->move("uploads",$file_name);                    
+                        $asociado->setImagen($file_name);
+                    }else
+                        {
+                        $asociado->setImagen($per_imagen);
+                        }
+                    $asociado->setIdsocio($form->get("idsocio")->getData());
+                                        
                     $em->persist($asociado);
                     $flush = $em->flush();
 
@@ -125,4 +164,13 @@ class AsociadoController extends Controller {
         //return $this->redirectToRoute("asociados");
     }
    
+    public function detailAsociadoAction($id){
+    $asociado = new Asociado();
+    $em = $this->getDoctrine()->getEntityManager();
+    $asociado_repo = $em->getRepository("ModeloBundle:Asociado");
+    $asociado = $asociado_repo->find($id);
+    return $this->render("ModeloBundle:Asociado:detail.html.twig", array(
+                    "asociado" => $asociado
+        ));
+    }
 }

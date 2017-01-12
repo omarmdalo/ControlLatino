@@ -25,7 +25,7 @@ class Invitado
     /**
      * @var string
      */
-    private $ceula;
+    private $cedula;
 
 
     /**
@@ -87,27 +87,27 @@ class Invitado
     }
 
     /**
-     * Set ceula
+     * Set cedula
      *
-     * @param string $ceula
+     * @param string $cedula
      *
      * @return Invitado
      */
-    public function setCeula($ceula)
+    public function setCedula($cedula)
     {
-        $this->ceula = $ceula;
+        $this->cedula = $cedula;
 
         return $this;
     }
 
     /**
-     * Get ceula
+     * Get cedula
      *
      * @return string
      */
-    public function getCeula()
+    public function getCedula()
     {
-        return $this->ceula;
+        return $this->cedula;
     }
 }
 

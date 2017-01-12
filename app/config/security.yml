@@ -27,8 +27,10 @@ security:
                 check_path: /login_check
             logout:
                 path: /logout
-                target: /login
+                target: /
                 
+    #access_control:
+     #   - { path: ^/socio, roles: ROLE_ADMIN}
             # activate different ways to authenticate
 
             # http_basic: ~

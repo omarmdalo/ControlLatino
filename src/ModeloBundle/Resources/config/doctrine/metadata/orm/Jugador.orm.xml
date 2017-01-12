@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Socio" table="socio">
-    <indexes>
-      <index name="TTipoSocio_idTipoSocio" columns="idTipoSocio"/>
-    </indexes>
+  <entity name="Jugador" table="jugador">
     <unique-constraints>
-      <unique-constraint name="cedula" columns="cedula,accion"/>
-      <unique-constraint name="rif" columns="rif"/>
+      <unique-constraint name="cedula" columns="cedula"/>
     </unique-constraints>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
@@ -14,48 +10,48 @@
     <field name="nombres" type="string" column="nombres" length="45" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="comment">Nombre del Socio</option>
+        <option name="comment">Nombres jugador</option>
       </options>
     </field>
     <field name="apellidos" type="string" column="apellidos" length="45" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="comment">Apellidos del Socio</option>
+        <option name="comment">Apellidos Jugador</option>
       </options>
     </field>
     <field name="cedula" type="string" column="cedula" length="20" nullable="false">
       <options>
         <option name="fixed"/>
-        <option name="comment">Cedula identidad Socio</option>
+        <option name="comment">Cedula Identidad Jugador</option>
       </options>
     </field>
-    <field name="razonSocial" type="string" column="razon_social" length="45" nullable="true">
+    <field name="codigo" type="string" column="codigo" length="255" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Nombre Empresa</option>
+        <option name="comment">Codigo Carnet afiliado</option>
       </options>
     </field>
-    <field name="rif" type="string" column="rif" length="20" nullable="true">
+    <field name="fecha" type="date" column="fecha" nullable="true">
+      <options>
+        <option name="comment">Fecha Afiliacion</option>
+      </options>
+    </field>
+    <field name="numafiliacion" type="string" column="numafiliacion" length="20" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Registro de Informacion fiscal</option>
+        <option name="comment">numero de afiliacion</option>
       </options>
     </field>
-    <field name="fecha" type="date" column="fecha" nullable="false">
+    <field name="solvente" type="boolean" column="solvente" nullable="true">
       <options>
-        <option name="comment">Fecha compra accion del socio</option>
+        <option name="comment">solvencia</option>
       </options>
     </field>
-    <field name="accion" type="string" column="accion" length="20" nullable="false">
+    <field name="imagen" type="string" column="imagen" length="255" nullable="true">
       <options>
         <option name="fixed"/>
-        <option name="comment">Numero de accion del Socio</option>
+        <option name="comment">ruta imagen</option>
       </options>
     </field>
-    <many-to-one field="idtiposocio" target-entity="Tiposocio" fetch="LAZY">
-      <join-columns>
-        <join-column name="idTipoSocio" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
   </entity>
 </doctrine-mapping>

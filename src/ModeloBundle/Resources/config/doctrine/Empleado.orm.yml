@@ -48,6 +48,30 @@ ModeloBundle\Entity\Empleado:
             options:
                 fixed: false
                 comment: 'Cedula Empleado'
+        fecha:
+            type: date
+            nullable: false
+            options:
+                comment: 'Fecha Ingreso'
+        estado:
+            type: boolean
+            nullable: false
+            options:
+                comment: 'Estado Empleado'
+        codigo:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+                comment: 'Codigo Carnet Empleado'
+        imagen:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: 'Ruta imagen'
     manyToOne:
         iddepartamento:
             targetEntity: Departamento

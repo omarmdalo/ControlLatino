@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Familiar" table="familiar">
+    <indexes>
+      <index name="idSocio" columns="idSocio,idAsociado"/>
+      <index name="idTipofamiliar" columns="idTipofamiliar"/>
+      <index name="idAsociado" columns="idAsociado"/>
+      <index name="IDX_8A34CA5E2F721014" columns="idSocio"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombres" type="string" column="nombres" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Nombres Familiar</option>
+      </options>
+    </field>
+    <field name="apellidos" type="string" column="apellidos" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Apellidos Familiar</option>
+      </options>
+    </field>
+    <field name="cedula" type="string" column="cedula" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Cedula</option>
+      </options>
+    </field>
+    <field name="fecha" type="date" column="fecha" nullable="false">
+      <options>
+        <option name="comment">Fecha de Ingreso</option>
+      </options>
+    </field>
+    <field name="imagen" type="string" column="imagen" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Ruta de Imagen</option>
+      </options>
+    </field>
+    <field name="codigo" type="string" column="codigo" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Codigo de Barras</option>
+      </options>
+    </field>
+    <many-to-one field="idtipofamiliar" target-entity="Tipofamiliar" fetch="LAZY">
+      <join-columns>
+        <join-column name="idTipofamiliar" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idasociado" target-entity="Asociado" fetch="LAZY">
+      <join-columns>
+        <join-column name="idAsociado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idsocio" target-entity="Socio" fetch="LAZY">
+      <join-columns>
+        <join-column name="idSocio" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

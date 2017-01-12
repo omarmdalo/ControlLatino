@@ -13,6 +13,9 @@ ModeloBundle\Entity\Socio:
         rif:
             columns:
                 - rif
+        old:
+            columns:
+                - old
     id:
         id:
             type: integer
@@ -72,6 +75,32 @@ ModeloBundle\Entity\Socio:
             options:
                 fixed: false
                 comment: 'Numero de accion del Socio'
+        solvente:
+            type: boolean
+            nullable: false
+            options:
+                comment: 'Campo Logico Solvencia'
+        imagen:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: 'Ruta de imagen'
+        codigo:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+                comment: 'Codigo de barras carnet'
+        old:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: 'Coficacion anterior'
     manyToOne:
         idtiposocio:
             targetEntity: Tiposocio

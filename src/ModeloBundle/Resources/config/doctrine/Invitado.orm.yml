@@ -26,13 +26,11 @@ ModeloBundle\Entity\Invitado:
             options:
                 fixed: false
                 comment: 'Apelldos Invitado'
-            column: Apellidos
-        ceula:
+        cedula:
             type: string
             nullable: false
             length: 20
             options:
                 fixed: false
                 comment: 'Cedula Identidad Invitados'
-            column: Ceula
     lifecycleCallbacks: {  }

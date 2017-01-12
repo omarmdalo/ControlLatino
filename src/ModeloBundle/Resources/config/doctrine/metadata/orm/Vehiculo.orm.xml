@@ -3,6 +3,7 @@
   <entity name="Vehiculo" table="vehiculo">
     <indexes>
       <index name="TSocio_IdSocio" columns="IdSocio"/>
+      <index name="idAsociado" columns="idAsociado"/>
     </indexes>
     <unique-constraints>
       <unique-constraint name="Placa" columns="Placa"/>
@@ -28,6 +29,11 @@
         <option name="comment">Placa del Vehiculo</option>
       </options>
     </field>
+    <many-to-one field="idasociado" target-entity="Asociado" fetch="LAZY">
+      <join-columns>
+        <join-column name="idAsociado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idsocio" target-entity="Socio" fetch="LAZY">
       <join-columns>
         <join-column name="IdSocio" referenced-column-name="id"/>

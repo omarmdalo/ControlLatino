@@ -5,6 +5,9 @@ ModeloBundle\Entity\Vehiculo:
         TSocio_IdSocio:
             columns:
                 - IdSocio
+        idAsociado:
+            columns:
+                - idAsociado
     uniqueConstraints:
         Placa:
             columns:
@@ -51,6 +54,16 @@ ModeloBundle\Entity\Vehiculo:
             inversedBy: null
             joinColumns:
                 IdSocio:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idasociado:
+            targetEntity: Asociado
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idAsociado:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

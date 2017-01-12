@@ -30,7 +30,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="caducidad" type="date" column="caducidad" nullable="false"/>
+    <field name="caducidad" type="date" column="caducidad" nullable="true"/>
     <many-to-one field="idempleado" target-entity="Empleado" fetch="LAZY">
       <join-columns>
         <join-column name="idEmpleado" referenced-column-name="id"/>

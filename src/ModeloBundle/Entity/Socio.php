@@ -48,10 +48,33 @@ class Socio
     private $accion;
 
     /**
+     * @var boolean
+     */
+    private $solvente;
+
+    /**
+     * @var string
+     */
+    private $imagen;
+
+    /**
+     * @var string
+     */
+    private $codigo;
+
+    /**
+     * @var string
+     */
+    private $old;
+
+    /**
      * @var \ModeloBundle\Entity\Tiposocio
      */
     private $idtiposocio;
 
+    public function __toString() {
+        return $this->accion;
+    }
 
     /**
      * Get id
@@ -229,6 +252,102 @@ class Socio
     public function getAccion()
     {
         return $this->accion;
+    }
+
+    /**
+     * Set solvente
+     *
+     * @param boolean $solvente
+     *
+     * @return Socio
+     */
+    public function setSolvente($solvente)
+    {
+        $this->solvente = $solvente;
+
+        return $this;
+    }
+
+    /**
+     * Get solvente
+     *
+     * @return boolean
+     */
+    public function getSolvente()
+    {
+        return $this->solvente;
+    }
+
+    /**
+     * Set imagen
+     *
+     * @param string $imagen
+     *
+     * @return Socio
+     */
+    public function setImagen($imagen)
+    {
+        $this->imagen = $imagen;
+
+        return $this;
+    }
+
+    /**
+     * Get imagen
+     *
+     * @return string
+     */
+    public function getImagen()
+    {
+        return $this->imagen;
+    }
+
+    /**
+     * Set codigo
+     *
+     * @param string $codigo
+     *
+     * @return Socio
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
+
+        return $this;
+    }
+
+    /**
+     * Get codigo
+     *
+     * @return string
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    /**
+     * Set old
+     *
+     * @param string $old
+     *
+     * @return Socio
+     */
+    public function setOld($old)
+    {
+        $this->old = $old;
+
+        return $this;
+    }
+
+    /**
+     * Get old
+     *
+     * @return string
+     */
+    public function getOld()
+    {
+        return $this->old;
     }
 
     /**

@@ -37,4 +37,35 @@ ModeloBundle\Entity\Jugador:
             options:
                 fixed: false
                 comment: 'Cedula Identidad Jugador'
+        codigo:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: 'Codigo Carnet afiliado'
+        fecha:
+            type: date
+            nullable: true
+            options:
+                comment: 'Fecha Afiliacion'
+        numafiliacion:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+                comment: 'numero de afiliacion'
+        solvente:
+            type: boolean
+            nullable: true
+            options:
+                comment: solvencia
+        imagen:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: 'ruta imagen'
     lifecycleCallbacks: {  }

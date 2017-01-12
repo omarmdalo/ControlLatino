@@ -32,6 +32,11 @@ class Vehiculo
      */
     private $idsocio;
 
+    /**
+     * @var \ModeloBundle\Entity\Asociado
+     */
+    private $idasociado;
+
 
     /**
      * Get id
@@ -137,6 +142,30 @@ class Vehiculo
     public function getIdsocio()
     {
         return $this->idsocio;
+    }
+
+    /**
+     * Set idasociado
+     *
+     * @param \ModeloBundle\Entity\Asociado $idasociado
+     *
+     * @return Vehiculo
+     */
+    public function setIdasociado(\ModeloBundle\Entity\Asociado $idasociado = null)
+    {
+        $this->idasociado = $idasociado;
+
+        return $this;
+    }
+
+    /**
+     * Get idasociado
+     *
+     * @return \ModeloBundle\Entity\Asociado
+     */
+    public function getIdasociado()
+    {
+        return $this->idasociado;
     }
 }
 

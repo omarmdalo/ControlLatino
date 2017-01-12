@@ -3,9 +3,9 @@
 namespace ModeloBundle\Entity;
 
 /**
- * Tipoasociado
+ * Tipofamiliar
  */
-class Tipoasociado
+class Tipofamiliar
 {
     /**
      * @var integer
@@ -21,11 +21,6 @@ class Tipoasociado
      * @var string
      */
     private $descripcion;
-
-    /**
-     * @var string
-     */
-    private $contribuyente;
 
 
     /**
@@ -43,7 +38,7 @@ class Tipoasociado
      *
      * @param string $nombre
      *
-     * @return Tipoasociado
+     * @return Tipofamiliar
      */
     public function setNombre($nombre)
     {
@@ -67,7 +62,7 @@ class Tipoasociado
      *
      * @param string $descripcion
      *
-     * @return Tipoasociado
+     * @return Tipofamiliar
      */
     public function setDescripcion($descripcion)
     {
@@ -84,30 +79,6 @@ class Tipoasociado
     public function getDescripcion()
     {
         return $this->descripcion;
-    }
-
-    /**
-     * Set contribuyente
-     *
-     * @param string $contribuyente
-     *
-     * @return Tipoasociado
-     */
-    public function setContribuyente($contribuyente)
-    {
-        $this->contribuyente = $contribuyente;
-
-        return $this;
-    }
-
-    /**
-     * Get contribuyente
-     *
-     * @return string
-     */
-    public function getContribuyente()
-    {
-        return $this->contribuyente;
     }
 }
 

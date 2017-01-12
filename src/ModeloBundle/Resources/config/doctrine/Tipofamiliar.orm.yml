@@ -1,6 +1,6 @@
-ModeloBundle\Entity\Tipoasociado:
+ModeloBundle\Entity\Tipofamiliar:
     type: entity
-    table: tipoasociado
+    table: tipofamiliar
     id:
         id:
             type: integer
@@ -26,11 +26,4 @@ ModeloBundle\Entity\Tipoasociado:
             options:
                 fixed: false
                 comment: 'descripcion tipo de asociado'
-        contribuyente:
-            type: string
-            nullable: false
-            length: 5
-            options:
-                fixed: false
-                comment: 'saber si el asociado es contribuyente'
     lifecycleCallbacks: {  }

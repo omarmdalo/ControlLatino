@@ -30,6 +30,28 @@
         <option name="comment">Cedula Empleado</option>
       </options>
     </field>
+    <field name="fecha" type="date" column="fecha" nullable="false">
+      <options>
+        <option name="comment">Fecha Ingreso</option>
+      </options>
+    </field>
+    <field name="estado" type="boolean" column="estado" nullable="false">
+      <options>
+        <option name="comment">Estado Empleado</option>
+      </options>
+    </field>
+    <field name="codigo" type="string" column="codigo" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Codigo Carnet Empleado</option>
+      </options>
+    </field>
+    <field name="imagen" type="string" column="imagen" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Ruta imagen</option>
+      </options>
+    </field>
     <many-to-one field="idcargo" target-entity="Cargo" fetch="LAZY">
       <join-columns>
         <join-column name="idCargo" referenced-column-name="id"/>

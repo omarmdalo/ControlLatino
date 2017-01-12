@@ -2,26 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Controller/DefaultController.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Entity/Invitado.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/views/Ficha/add.html.twig</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/views/Ficha/index.html.twig</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/config/doctrine/Usuario.orm.yml</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Repository/FichaRepository.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Controller/FichaController.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Entity/InvitadoFicha.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/views/Asociado/index.html.twig</file>
-            <file>file:/C:/wamp/www/latino/app/config/security.yml</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/config/routing.yml</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Entity/Ficha.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/views/User/login.html.twig</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/config/doctrine/Ficha.orm.yml</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Controller/AsociadoController.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/views/layout.html.twig</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Controller/UserController.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Entity/Usuario.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Form/FichaType.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

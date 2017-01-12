@@ -1,22 +1,6 @@
 {% extends "ModeloBundle::layout.html.twig" %}
 {% block content %}
 
-    {% if is_granted('ROLE_USER') %}
-        <strong>
-            Estas logueado como ADMINISTRACION
-        <strong>
-    {% endif %}
-
-    {% if is_granted('ROLE_ADMIN') %}
-        <strong>
-            Estas logueado como ADMINISTRADOR
-        <strong>
-    {% endif %}
-    {% if is_granted('ROLE_GUARD') %}
-        <strong>
-            Estas logueado como VIGILANCIA
-        <strong>
-    {% endif %}
 
                     <div class="col-lg-4">
                         <h2>Identificate</h2>
@@ -29,7 +13,7 @@
                             <input type="password" id="password" name="_password" class="form-control"></input>
                             <br/>
                             <input type="submit" value="Entrar" class="btn btn-success"></input>
-                            <input type="hidden" name="_target_path" value="/login"></input>
+                            <input type="hidden" name="_target_path" value="/dashboard"></input>
                         </form>
                     </div>
 

@@ -8,7 +8,6 @@ use ModeloBundle\Entity\Socio;
 use ModeloBundle\Entity\Tiposocio;
 use ModeloBundle\Form\SocioType;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Validator\Constraints\Length;
 
 
 class SocioController extends Controller {
@@ -128,6 +127,16 @@ class SocioController extends Controller {
         ));
 
         //return $this->redirectToRoute("asociados");
+    }
+    
+    public function detailSocioAction($id){
+    $socio = new Socio();
+    $em = $this->getDoctrine()->getEntityManager();
+    $socio_repo = $em->getRepository("ModeloBundle:Socio");
+    $socio = $socio_repo->find($id);
+    return $this->render("ModeloBundle:Socio:detail.html.twig", array(
+                    "socio" => $socio
+        ));
     }
 
 }

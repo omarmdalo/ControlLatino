@@ -33,14 +33,29 @@ class Asociado
     private $fecha;
 
     /**
+     * @var string
+     */
+    private $numasociado;
+
+    /**
+     * @var string
+     */
+    private $codigo;
+
+    /**
+     * @var boolean
+     */
+    private $solvente;
+
+    /**
+     * @var string
+     */
+    private $imagen;
+
+    /**
      * @var \ModeloBundle\Entity\Socio
      */
     private $idsocio;
-
-    /**
-     * @var \ModeloBundle\Entity\Tipoasociado
-     */
-    private $idtipoasociado;
 
 
     /**
@@ -150,6 +165,102 @@ class Asociado
     }
 
     /**
+     * Set numasociado
+     *
+     * @param string $numasociado
+     *
+     * @return Asociado
+     */
+    public function setNumasociado($numasociado)
+    {
+        $this->numasociado = $numasociado;
+
+        return $this;
+    }
+
+    /**
+     * Get numasociado
+     *
+     * @return string
+     */
+    public function getNumasociado()
+    {
+        return $this->numasociado;
+    }
+
+    /**
+     * Set codigo
+     *
+     * @param string $codigo
+     *
+     * @return Asociado
+     */
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
+
+        return $this;
+    }
+
+    /**
+     * Get codigo
+     *
+     * @return string
+     */
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    /**
+     * Set solvente
+     *
+     * @param boolean $solvente
+     *
+     * @return Asociado
+     */
+    public function setSolvente($solvente)
+    {
+        $this->solvente = $solvente;
+
+        return $this;
+    }
+
+    /**
+     * Get solvente
+     *
+     * @return boolean
+     */
+    public function getSolvente()
+    {
+        return $this->solvente;
+    }
+
+    /**
+     * Set imagen
+     *
+     * @param string $imagen
+     *
+     * @return Asociado
+     */
+    public function setImagen($imagen)
+    {
+        $this->imagen = $imagen;
+
+        return $this;
+    }
+
+    /**
+     * Get imagen
+     *
+     * @return string
+     */
+    public function getImagen()
+    {
+        return $this->imagen;
+    }
+
+    /**
      * Set idsocio
      *
      * @param \ModeloBundle\Entity\Socio $idsocio
@@ -171,30 +282,6 @@ class Asociado
     public function getIdsocio()
     {
         return $this->idsocio;
-    }
-
-    /**
-     * Set idtipoasociado
-     *
-     * @param \ModeloBundle\Entity\Tipoasociado $idtipoasociado
-     *
-     * @return Asociado
-     */
-    public function setIdtipoasociado(\ModeloBundle\Entity\Tipoasociado $idtipoasociado = null)
-    {
-        $this->idtipoasociado = $idtipoasociado;
-
-        return $this;
-    }
-
-    /**
-     * Get idtipoasociado
-     *
-     * @return \ModeloBundle\Entity\Tipoasociado
-     */
-    public function getIdtipoasociado()
-    {
-        return $this->idtipoasociado;
     }
 }
 

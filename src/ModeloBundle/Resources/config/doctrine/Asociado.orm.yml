@@ -1,15 +1,9 @@
 ModeloBundle\Entity\Asociado:
     type: entity
     table: asociado
+    repositoryClass: ModeloBundle\Repository\AsociadoRepository
     indexes:
         TSocios_idSocio:
-            columns:
-                - idSocio
-                - idTipoAsociado
-        TTipoaAsociado_idTipoAsociado:
-            columns:
-                - idTipoAsociado
-        IDX_5074CE1C2F721014:
             columns:
                 - idSocio
     uniqueConstraints:
@@ -53,6 +47,32 @@ ModeloBundle\Entity\Asociado:
             nullable: false
             options:
                 comment: 'Fecha registro Asociado'
+        numasociado:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+                comment: 'Numero Asociado'
+        codigo:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+                comment: 'Codigo asociado'
+        solvente:
+            type: boolean
+            nullable: false
+            options:
+                comment: 'Campo Logico de Solvencia'
+        imagen:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: 'Ruta de Imagen'
     manyToOne:
         idsocio:
             targetEntity: Socio
@@ -62,16 +82,6 @@ ModeloBundle\Entity\Asociado:
             inversedBy: null
             joinColumns:
                 idSocio:
-                    referencedColumnName: id
-            orphanRemoval: false
-        idtipoasociado:
-            targetEntity: Tipoasociado
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                idTipoAsociado:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

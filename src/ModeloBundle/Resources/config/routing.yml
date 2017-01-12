@@ -1,6 +1,6 @@
 login:
-    path: /login
-    defaults: { _controller: ModeloBundle:User:login }
+    path: /
+    defaults: { _controller: ModeloBundle:Login:inicio }
     
 login_check:
     path: /login_check
@@ -9,7 +9,7 @@ logout:
     path: /logout
 
 modelo_homepage:
-    path:     /
+    path:     /dashboard
     defaults: { _controller: ModeloBundle:Default:index }
     
 socio_add:    
@@ -19,6 +19,10 @@ socio_add:
 socios:    
     path:     /socio
     defaults: { _controller: ModeloBundle:Socio:index }
+
+socio_detail:
+    path:     /socio/detalle/{id}
+    defaults: { _controller: ModeloBundle:Socio:detailSocio }
    
 socio_delete:
     path:     /socio/delete/{id}
@@ -26,7 +30,7 @@ socio_delete:
     
 socio_update:
     path:     /socio/update/{id}
-    defaults: { _controller: ModeloBundle:Socio:updateSocio }   
+    defaults: { _controller: ModeloBundle:Socio:updateSocio }
     
 asociados:    
     path:     /asociado
@@ -43,6 +47,10 @@ asociado_update:
 asociado_delete:
     path:     /asociado/delete/{id}
     defaults: { _controller: ModeloBundle:Asociado:deleteAsociado }
+
+asociado_detail:
+    path:     /asociado/detalle/{id}
+    defaults: { _controller: ModeloBundle:Asociado:detailAsociado }
     
 fichas:    
     path:     /ficha/{page}
