@@ -53,7 +53,7 @@ asociado_detail:
     defaults: { _controller: ModeloBundle:Asociado:detailAsociado }
     
 fichas:    
-    path:     /ficha/{page}
+    path:     /ficha/list/{page}
     defaults: { _controller: ModeloBundle:Ficha:index, page:1 }
 
 ficha_add:    

@@ -1,67 +1,107 @@
 {% extends "ModeloBundle::layout.html.twig" %}
 {% block content %}
-    <div class="col-lg-6">
-        <h2> Asociados </h2>
-        <hr/>
-        <a href="{{path("ficha_add")}}" class="btn btn-success btn-lg">
-            <span class="glyphicon glyphicon-plus"></span> 
-        </a>
-        <a href="#" class="btn btn-success btn-lg">
-            <span class="glyphicon glyphicon-print"></span> Print 
-        </a>
-        <hr/>
-        {% for message in app.session.flashbag().get('status') %}
-            <div class="alert alert-danger">
-                {{ message }}
-            </div>
-        {% endfor %}  
-        
-        <table class="table table-striped">
-            <tr>
-                <th>Motivo</th>
-                <th>fecha</th>
-                <th>Accion</th>           
-                <th>Editar</th>
-                <th>Eliminar</th>                   
-            </tr>    
-        {% for ficha in fichas %}
-            <tr>
-                <td>{{ ficha.motivo }} </td>
-                <td>{{ ficha.fecha | date('Y-m-d') }} </td>
-                <td>{{ ficha.idsocio.accion }} </td>             
-                <td> 
-                    <a href="{{path("ficha_update",{"id":ficha.id})}}" class="btn btn-success btn-sm">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
-                </td>
-                <td>
-                     <a href="{{path("ficha_delete",{"id":ficha.id})}}" class="btn btn-danger btn-sm">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </a>  
-
-                </td>
-            </tr>
-        {% endfor %}      
-        </table>
-        <div class="clearfix"></div> 
-        
-        <ul class="pagination">
-            {% if page == 1%}
-                
-            {% else %}
-                {% set page = page - 1 %}
-            {% endif %}
-            <li><a href="{{path('fichas',{"page":page})}}">&laquo;</a></li>
-            {% for i in 1..pagesCount %}
-            <li><a href="{{path('fichas',{"page":i})}}">{{i}}</a></li>
-            {% endfor %}
-            {% if page_m == pagesCount%}
-                
-            {% else %}
-                {% set page_m = page + 1 %}
-            {% endif %}
-            <li><a href="{{path('fichas',{"page":page_m})}}">&raquo;</a></li>
-        </ul>
+     
+    <div class="row">
+        <!-- Page Header -->
+        <div class="col-lg-12">
+            <h1 class="page-header"></h1>
+        </div>
+        <!--End Page Header -->
     </div>
-   
+    
+    <div class="row">
+                <!-- Welcome -->
+        <div class="col-lg-12">
+            <a href="{{path("ficha_add")}}" class="btn btn-success btn-lg">
+                <span class="glyphicon glyphicon-plus"></span> 
+            </a>
+            <a href="#" class="btn btn-success btn-lg">
+                <span class="glyphicon glyphicon-print"></span> Print 
+            </a>
+            <hr/>
+            {% for message in app.session.flashbag().get('status') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %} 
+        </div>
+                <!--end  Welcome -->
+    </div>
+    
+    
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Advanced Tables -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                     Fichas de Invitados
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                                <tr>
+
+                                    <th>Motivo</th>
+                                    <th>fecha</th>
+                                    <th>Accion</th>                             
+                                    <th>Detalle</th>
+                                    <th>Editar</th>
+                                    <th>Eliminar</th> 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ficha in fichas %}
+                                <tr>
+                                    <td>{{ ficha.motivo }} </td>
+                                    <td>{{ ficha.fecha | date('Y-m-d') }} </td>
+                                    <td>{{ ficha.idsocio.accion }} </td>             
+                                    <td> 
+                                        <a href="#">
+                                            <button type="button" class="btn btn-info">Ver</button> 
+                                        </a>
+                                    </td>
+                                    <td> 
+                                        <a href="{{path("ficha_update",{"id":ficha.id})}}">
+                                            <button type="button" class="btn btn-primary">Editar</button> 
+                                        </a>
+                                    </td>
+                                    <td>
+                                         <a href="{{path("ficha_delete",{"id":ficha.id})}}">
+                                            <button type="button" class="btn btn-danger">Eliminar</button>
+                                        </a>  
+
+                                    </td>
+                                </tr>
+                                {% endfor %}                                
+                            </tbody>
+                        </table>
+                    </div>
+                            
+                    <ul class="pagination">
+                        {% if page == 1%}
+
+                        {% else %}
+                            {% set page = page - 1 %}
+                        {% endif %}
+                        <li><a href="{{path('fichas',{"page":page})}}">&laquo;</a></li>
+                        {% for i in 1..pagesCount %}
+                        <li><a href="{{path('fichas',{"page":i})}}">{{i}}</a></li>
+                        {% endfor %}
+                        {% if page_m == pagesCount%}
+
+                        {% else %}
+                            {% set page_m = page + 1 %}
+                        {% endif %}
+                        <li><a href="{{path('fichas',{"page":page_m})}}">&raquo;</a></li>
+                    </ul>        
+
+                </div>
+            </div>
+            <!--End Advanced Tables -->
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    
 {% endblock %}

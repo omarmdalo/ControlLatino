@@ -24,7 +24,7 @@ class FichaType extends AbstractType
                         "label"=>"(*)Motivo de Visita",
                         "required"=>"required",
                         "attr"=> array(
-                                 "class"=>"form-fecha form-control"
+                                 "class"=>"form-group form-control"
                                  )
                         )
                 )
@@ -48,7 +48,10 @@ class FichaType extends AbstractType
                         'class' => 'ModeloBundle:Socio',
                         'choice_label' => 'accion',
                         'multiple' => false,
-                        'expanded' => false
+                        'expanded' => false,
+                        "attr"=> array(
+                        "class"=>"form-group form-control"
+                            )
                         )
                     )
                 
@@ -58,7 +61,7 @@ class FichaType extends AbstractType
                         "label"=>"(*)Invitados Ejem: Nombre Apellido Cedula/Siguiente",
                         "required"=>"required",
                         "attr"=> array(
-                                    "class"=>"form-control"
+                                    "class"=>"form-group form-control"
                                     )
                         )
                 )
@@ -66,7 +69,7 @@ class FichaType extends AbstractType
             ->add('guardar', SubmitType::class, 
                     array(
                         "attr"=> array(
-                                    "class"=>"form-submit btn btn-success"
+                                    "class"=>"form-group form-submit btn btn-success"
                                     )
                         )
                 )     

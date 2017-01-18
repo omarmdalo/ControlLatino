@@ -30,7 +30,6 @@ class SocioController extends Controller {
 
         $socio = new Socio();
         $form = $this->createForm(SocioType::class, $socio);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
@@ -38,7 +37,9 @@ class SocioController extends Controller {
                 $em = $this->getDoctrine()->getEntityManager();
                 $socio_repo = $em->getRepository("ModeloBundle:Socio");
                 $socio = $socio_repo->findOneBy(array("cedula" => $form->get("cedula")->getData()));
+                $codigo="";
                 if (count($socio) == 0) {
+            
                     $socio = new Socio();
                     //Extraer data de formulario
                     $socio->setNombres($form->get("nombres")->getData());
@@ -46,8 +47,29 @@ class SocioController extends Controller {
                     $socio->setCedula($form->get("cedula")->getData());
                     $socio->setRazonSocial($form->get("razonSocial")->getData());
                     $socio->setRif($form->get("rif")->getData());
-                    $socio->setFecha($form->get("fecha")->getData());
+                    $socio->setFecha(new \DateTime("now"));
+                    
+                    //Generamos Codigo de Barras (Repositorio Asociados)                 
+                    $codigo=$socio_repo->GenerarCodigo($form->get("accion")->getData());
+
+                    $socio->setCodigo($codigo);
+                    $socio->setOld($form->get("old")->getData());
+                    
+                    //Imagen Perfil
+                    $file=$form["imagen"]->getData();
+                    if(!empty($file) && $file!=null){
+                    $file=$form["imagen"]->getData();
+                    $ext=$file->guessExtension();
+                    $file_name=$form->get("cedula")->getData().time().".".$ext;
+                    $file->move("uploads/socios",$file_name);                    
+                    $socio->setImagen($file_name);
+                    }else
+                        {
+                        $socio->setImagen(null);
+                        }
+                    
                     $socio->setAccion($form->get("accion")->getData());
+                    $socio->setSolvente($form->get("solvente")->getData());
                     $socio->setIdtiposocio($form->get("idtiposocio")->getData());
                     
                     $em = $this->getDoctrine()->getEntityManager();
@@ -92,25 +114,44 @@ class SocioController extends Controller {
         $socio_repo = $em->getRepository("ModeloBundle:Socio");
         $socio = $socio_repo->find($id);
         
+        $per_imagen= $socio->getImagen();
+        
         $form = $this->createForm(SocioType::class, $socio);
         $form->handleRequest($request);
         
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                     
                     //Extraer data de formulario
                     $socio->setNombres($form->get("nombres")->getData());
                     $socio->setApellidos($form->get("apellidos")->getData());
                     $socio->setCedula($form->get("cedula")->getData());
                     $socio->setRazonSocial($form->get("razonSocial")->getData());
                     $socio->setRif($form->get("rif")->getData());
-                    $socio->setFecha($form->get("fecha")->getData());
-                    $socio->setAccion($form->get("accion")->getData());
-                    $socio->setIdtiposocio($form->get("idtiposocio")->getData());
+                                        
+                    $socio->setOld($form->get("old")->getData());
                     
+                    
+                    //Imagen Perfil
+                    $file=$form["imagen"]->getData();
+                    if(!empty($file) && $file!=null){
+                    $file=$form["imagen"]->getData();
+                    $ext=$file->guessExtension();
+                    $file_name=$form->get("cedula")->getData().time().".".$ext;
+                    $file->move("uploads/socios",$file_name);                    
+                    $socio->setImagen($file_name);
+                    }else
+                        {
+                        $socio->setImagen($per_imagen);
+                        }
+                    
+                    $socio->setAccion($form->get("accion")->getData());
+                    $socio->setSolvente($form->get("solvente")->getData());
+                    $socio->setIdtiposocio($form->get("idtiposocio")->getData());
+
+
                     $em->persist($socio);
                     $flush = $em->flush();
-
+                    
                     if ($flush == null) {
                         $status = "Socio Actulizado Correctamente";
                     } else {

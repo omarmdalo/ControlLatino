@@ -19,7 +19,7 @@ class FichaController extends Controller {
     }
     public function indexAction($page){
     $fichas = new Ficha();
-    $pageSize = 5;
+    $pageSize = 10;
     $em = $this->getDoctrine()->getEntityManager();
     $ficha_repo = $em->getRepository("ModeloBundle:Ficha");
     $fichas = $ficha_repo->getPaginateEntries($pageSize,$page);
@@ -128,7 +128,7 @@ class FichaController extends Controller {
             $arrayInvi .= " ";
             $arrayInvi .= $invi->getIdinvitado()->getApellidos();
             $arrayInvi .= " ";
-            $arrayInvi .= $invi->getIdinvitado()->getCeula();
+            $arrayInvi .= $invi->getIdinvitado()->getCedula();
             $arrayInvi .= "/";
         } 
         
@@ -184,8 +184,7 @@ class FichaController extends Controller {
                 return $this->render("ModeloBundle:Ficha:update.html.twig", array(
                     "form" => $form->createView(),
                     "ficha"=>$ficha,
-                    "invitados"=>$arrayInvi
-                    
+                    "invitados"=>$arrayInvi                    
         ));
 
         //return $this->redirectToRoute("asociados");

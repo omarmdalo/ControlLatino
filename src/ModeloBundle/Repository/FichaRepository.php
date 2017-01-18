@@ -28,19 +28,19 @@ class FichaRepository  extends \Doctrine\ORM\EntityRepository {
         foreach ($invitados as $invitado){
             //var_dump($invitado);
             $invitado = explode(" ",$invitado);            
-            $temp = $invitados_repo->findOneBy(array("ceula"=>$invitado[2]));
+            $temp = $invitados_repo->findOneBy(array("cedula"=>$invitado[2]));
             //($invitado);
             //die();
             if(count ($temp) == 0){
                 $invitado_obj = new Invitado();
                 $invitado_obj->setNombres($invitado[0]);
                 $invitado_obj->setApellidos($invitado[1]);
-                $invitado_obj->setCeula($invitado[2]);
+                $invitado_obj->setCedula($invitado[2]);
                 $em->persist($invitado_obj);
                 $em->flush();
             }
             
-            $invitado = $invitados_repo->findOneBy(array("ceula"=>$invitado[2]));
+            $invitado = $invitados_repo->findOneBy(array("cedula"=>$invitado[2]));
             $invitadoficha = new InvitadoFicha();
             $invitadoficha->setIdficha($ficha);
             $invitadoficha->setIdinvitado($invitado);
@@ -52,8 +52,9 @@ class FichaRepository  extends \Doctrine\ORM\EntityRepository {
         return $flush;
     }
     
-    public function getPaginateEntries($pageSize=5, $currentPage=1){
+    public function getPaginateEntries($pageSize, $currentPage){
         $em = $this->getEntityManager();
+        
         
         $dql = "SELECT e FROM ModeloBundle\Entity\Ficha e ORDER BY e.id DESC";
         $query= $em->createQuery($dql)

@@ -5,6 +5,12 @@ namespace ModeloBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class SocioType extends AbstractType
 {
@@ -15,26 +21,41 @@ class SocioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombres', TextType::class, array("label"=>"(*)Nombres","required"=>"required", "attr"=> array(
-                "class"=>"form-group form-control"
+            ->add('nombres', TextType::class, 
+                    array("label"=>"(*)Nombres",
+                        "required"=>"required",
+                        "attr"=> array("class"=>"form-group form-control"
             )))
-            ->add('apellidos', TextType::class, array("label"=>"(*)Apellidos","required"=>"required", "attr"=> array(
-                "class"=>"form-group form-control"
+            ->add('apellidos', TextType::class, 
+                    array("label"=>"(*)Apellidos",
+                        "required"=>"required",
+                        "attr"=> array("class"=>"form-group form-control"
             )))
-            ->add('cedula', TextType::class, array("label"=>"(*)Cedula Identidad","required"=>"required", "attr"=> array(
-                "class"=>"form-group form-control"
+            ->add('cedula', TextType::class, 
+                    array("label"=>"(*)Cedula Identidad",
+                        "required"=>"required",
+                        "attr"=> array("class"=>"form-group form-control"
             )))
-            ->add('razonSocial', TextType::class, array("label"=>"Razon Social",'required'=> false,'empty_data'=>null , "attr"=> array(
-                "class"=>"form-group form-control"
+            ->add('razonSocial', TextType::class, 
+                    array("label"=>"Razon Social",
+                        'required'=> false,
+                        'empty_data'=>null,
+                        "attr"=> array("class"=>"form-group form-control"
             )))
-            ->add('rif', TextType::class, array("label"=>"Registro Informacion Fiscal","required"=>false,'empty_data'=>null , "attr"=> array(
-                "class"=>"form-group form-control"
+            ->add('rif', TextType::class, 
+                    array("label"=>"Registro Informacion Fiscal",
+                        "required"=>false,
+                        'empty_data'=>null,
+                        "attr"=> array("class"=>"form-group form-control"
             )))
-            ->add('accion', TextType::class, array("label"=>"(*)Numero de Accion","required"=>"required", "attr"=> array(
-                "class"=>"form-group form-control"
+            ->add('accion', TextType::class, 
+                    array("label"=>"(*)Numero de Accion",
+                        "required"=>"required", 
+                        "attr"=> array("class"=>"form-group form-control"
             )))
             ->add('solvente', ChoiceType::class, 
-            array("label"=>"Estado de Ingreso","required"=>"required",
+            array("label"=>"Estado de Ingreso",
+            "required"=>"required",
             'multiple' => false,
             'expanded' => false,
             'choices' => array('Habilitado' => true, 'Deshabilitado' => false),

@@ -1,6 +1,7 @@
 ModeloBundle\Entity\Socio:
     type: entity
     table: socio
+    repositoryClass: ModeloBundle\Repository\SocioRepository
     indexes:
         TTipoSocio_idTipoSocio:
             columns:

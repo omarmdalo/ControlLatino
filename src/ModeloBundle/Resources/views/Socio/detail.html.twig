@@ -4,7 +4,7 @@
     <div class="row">
         <!-- Page Header -->
         <div class="col-lg-12">
-            <h1 class="page-header">Detalle Asociado</h1>
+            <h1 class="page-header"></h1>
         </div>
         <!--End Page Header -->
     </div>
@@ -12,13 +12,13 @@
     <div class="row">
                 <!-- Welcome -->
         <div class="col-lg-12">
-            <a href="{{path("asociados")}}">
-                    <button type="button" class="btn btn-success">Asociados</button> 
+            <a href="{{path("socios")}}">
+                    <button type="button" class="btn btn-success">Socios</button> 
             </a>
-            <a href="{{path("asociado_update",{"id":asociado.id})}}">
+            <a href="{{path("socio_update",{"id":socio.id})}}">
                     <button type="button" class="btn btn-warning">Editar</button> 
             </a>
-            <a href="{{path("asociado_delete",{"id":asociado.id})}}">
+            <a href="{{path("socio_delete",{"id":socio.id})}}">
                     <button type="button" class="btn btn-danger">Eliminar</button>
             </a>
             <a href="#">
@@ -33,46 +33,70 @@
             <!--Area chart example -->
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>Datos del Asociado                    
+                    <i class="fa fa-book"></i>Ficha del Socio                    
                 </div>
-                <div class="panel-body"> 
+                <div class="panel-body">
+                    <div class="row">
+                    <div class="col-lg-12">
+                        <img width="200" src="{{ asset("uploads/socios/"~socio.imagen) }}"
+                    </div>
+                    </div> 
+                    <div class="col-lg-6">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <img width="200" src="{{ asset("uploads/"~asociado.imagen) }}"
-                        </li>
-                        <li class="list-group-item">
                             <span class="input-group-addon">Nombres</span>                     
-                            <input type="text" class="form-control" value="{{asociado.nombres}}" disabled>
+                            <input type="text" class="form-control" value="{{socio.nombres}}" disabled>
                         </li>
                         <li class="list-group-item">
                             <span class="input-group-addon">Apellidos</span>
-                            <input type="text" class="form-control" value="{{asociado.apellidos}}" disabled>
-                        </li>
+                            <input type="text" class="form-control" value="{{socio.apellidos}}" disabled>
+                        </li>                       
                         <li class="list-group-item">
                             <span class="input-group-addon">Cedula</span>
-                            <input type="text" class="form-control" value="{{asociado.cedula}}" disabled>
+                            <input type="text" class="form-control" value="{{socio.cedula}}" disabled>
                         </li>
                         <li class="list-group-item">
-                            <span class="input-group-addon">Numero de asociado</span>
-                            <input type="text" class="form-control" value="{{asociado.numasociado}}" disabled>
+                            <span class="input-group-addon">Codigo Barras</span>
+                            <input type="text" class="form-control" value="{{socio.codigo}}" disabled>
+                        </li>
+                        {% if socio.old != null %}
+                        <li class="list-group-item">
+                            <span class="input-group-addon">Codigo Barras Antiguo</span>
+                            <input type="text" class="form-control" value="{{socio.old}}" disabled>
+                        </li>
+                        {% endif%}  
+                    </ul>
+                    </div>    
+                    <div class="col-lg-6">                          
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="input-group-addon">Tipo de Socio</span>
+                            <input type="text" class="form-control" value="{{socio.idtiposocio.nombre}}" disabled>
+                        </li>
+                        {% if socio.idtiposocio.id == 1 %}
+                        <li class="list-group-item">
+                            <span class="input-group-addon">Razon Social</span>
+                            <input type="text" class="form-control" value="{{socio.razonSocial}}" disabled>
                         </li>
                         <li class="list-group-item">
-                            <span class="input-group-addon">Codigo barra</span>
-                        <input type="text" class="form-control" value="{{asociado.codigo}}" disabled>
+                            <span class="input-group-addon">RIF</span>
+                        <input type="text" class="form-control" value="{{socio.rif}}" disabled>
+                        </li>
+                        {% endif%}
+                        <li class="list-group-item">
+                            <span class="input-group-addon">Accion</span>
+                        <input type="text" class="form-control" value="{{socio.accion}}" disabled>
                         </li>
                         <li class="list-group-item">
                             <span class="input-group-addon">Estado de Ingreso</span>
-                            {% if asociado.solvente %}
+                            {% if socio.solvente %}
                                     <input type="text" class="form-control" value="Permitido" disabled>
                             {% else %}
                                     <input type="text" class="form-control" value="Suspendido" disabled>
                             {% endif %} 
                         </li>
-                        <li class="list-group-item">
-                            <span class="input-group-addon">Accion Socio</span>
-                            <input type="text" class="form-control" value="{{asociado.idsocio.accion}}" disabled>
-                        </li>
-                    </ul>                  
+                    </ul>
+                    </div>
                 </div>
             </div>
             <!--End area chart example -->

@@ -72,9 +72,6 @@ class Socio
      */
     private $idtiposocio;
 
-    public function __toString() {
-        return $this->accion;
-    }
 
     /**
      * Get id
