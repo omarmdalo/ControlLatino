@@ -67,3 +67,19 @@ ficha_update:
 ficha_delete:
     path:     /ficha/delete/{id}
     defaults: { _controller: ModeloBundle:Ficha:deleteFicha }
+    
+disciplinas:    
+    path:     /disciplinas/list
+    defaults: { _controller: ModeloBundle:Disciplina:index}
+
+disciplina_add:    
+    path:     /disciplina/add
+    defaults: { _controller: ModeloBundle:Disciplina:addDisciplina }
+
+disciplina_update:
+    path:     /disciplina/update/{id}
+    defaults: { _controller: ModeloBundle:Disciplina:updateDisciplina } 
+    
+disciplina_delete:
+    path:     /disciplina/delete/{id}
+    defaults: { _controller: ModeloBundle:Disciplina:deleteDisciplina }
