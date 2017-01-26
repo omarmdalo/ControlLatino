@@ -1,0 +1,241 @@
+{% extends "ModeloBundle::layout.html.twig" %}
+{% block content %}
+
+    <div class="row">
+        <!-- Page Header -->
+        <div class="col-lg-12">
+            <h1 class="page-header"></h1>
+        </div>
+        <!--End Page Header -->
+    </div>
+
+    <div class="row">
+        <!-- Welcome -->
+        <div class="col-lg-12">
+            <a href="{{path("equipos")}}">
+                <button type="button" class="btn btn-success">Equipos</button> 
+            </a>
+            <a href="{{path("equipo_update",{"id":equipo.id})}}">
+                <button type="button" class="btn btn-warning">Editar</button> 
+            </a>
+            <a href="{{path("equipo_delete",{"id":equipo.id})}}">
+                <button type="button" class="btn btn-danger">Eliminar</button>
+            </a>
+            <a href="#">
+                <button type="button" class="btn btn-info">Imprimir</button>
+            </a>            
+            <hr/>
+        </div>
+        <!--end  Welcome -->
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <!--Collapsible Accordion Panel Group   -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Detalle Equipo
+                </div>
+                <div class="panel-body">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Datos del equipo</a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span class="input-group-addon">Nombre del Equipo</span>                     
+                                            <input type="text" class="form-control" value="{{equipo.nombre}}" disabled>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="input-group-addon">Descripcion</span>
+                                            <input type="text" class="form-control" value="{{equipo.descripcion}}" disabled>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="input-group-addon">Disciplina Deportiva</span>
+                                            <input type="text" class="form-control" value="{{equipo.idcampeonato.nombre}}" disabled>
+                                        </li>                        
+                                    </ul>                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Jugadores Socios</a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Apellidos</th>
+                                                <th>Cedula</th>
+                                                <th>Accion</th>                            
+                                                <th>Eliminar</th> 
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for jugador in jugadores %}
+                                                {% if jugador.idsocio %}
+                                                <tr>
+                                                    <td>{{ jugador.idsocio.nombres }} </td>
+                                                    <td>{{ jugador.idsocio.apellidos }} </td>
+                                                    <td>{{ jugador.idsocio.cedula }} </td>
+                                                    <td>{{ jugador.idsocio.accion }} </td>
+                                                    <td>
+                                                        <a href="#">
+                                                            <button type="button" class="btn btn-danger">Eliminar</button>
+                                                        </a>  
+                                                    </td>
+                                                </tr>
+                                                {% endif %}
+                                            {% endfor %}                                
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Jugadores Asociados</a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Apellidos</th>
+                                                <th>Cedula</th>
+                                                <th>Numero Asociado</th>
+                                                <th>Accion</th>                            
+                                                <th>Eliminar</th> 
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for jugador in jugadores %}
+                                                <tr>
+                                                    {% if jugador.idasociado  %}
+                                                    <td>{{ jugador.idasociado.nombres }} </td>
+                                                    <td>{{ jugador.idasociado.apellidos }} </td>
+                                                    <td>{{ jugador.idasociado.cedula }} </td>
+                                                    <td>{{ jugador.idasociado.numasociado }} </td>
+                                                    <td>{{ jugador.idasociado.idsocio.accion }} </td>
+                                                    <td>
+                                                        <a href="#">
+                                                            <button type="button" class="btn btn-danger">Eliminar</button>
+                                                        </a>  
+                                                    </td>
+                                                </tr>
+                                                {% endif %}
+                                            {% endfor %}                                
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Familiares</a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Apellidos</th>
+                                                <th>Cedula</th>
+                                                <th>Accion</th>                            
+                                                <th>Eliminar</th> 
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for jugador in jugadores %}
+                                                {% if jugador.idsocio  %}
+                                                <tr>
+                                                    <td>{{ jugador.idsocio.nombres }} </td>
+                                                    <td>{{ jugador.idsocio.apellidos }} </td>
+                                                    <td>{{ jugador.idsocio.cedula }} </td>
+                                                    <td>{{ jugador.idsocio.accion }} </td>
+                                                    <td>
+                                                        <a href="#">
+                                                            <button type="button" class="btn btn-danger">Eliminar</button>
+                                                        </a>  
+                                                    </td>
+                                                </tr>
+                                                {% endif %}
+                                            {% endfor %}                                
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Jugadores Invitados</a>
+                            </h4>
+                        </div>
+                        <div id="collapseFive" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Apellidos</th>
+                                                <th>Cedula</th>
+                                                <th>Numero Afiliacion</th>                            
+                                                <th>Eliminar</th> 
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for jugador in jugadores %}
+                                                {% if jugador.idjugador  %}
+                                                <tr>
+                                                    <td>{{ jugador.idjugador.nombres }} </td>
+                                                    <td>{{ jugador.idjugador.apellidos }} </td>
+                                                    <td>{{ jugador.idjugador.cedula }} </td>
+                                                    <td>{{ jugador.idjugador.numafiliacion }} </td>
+                                                    <td>
+                                                        <a href="#">
+                                                            <button type="button" class="btn btn-danger">Eliminar</button>
+                                                        </a>  
+                                                    </td>
+                                                </tr>
+                                                {% endif %}
+                                            {% endfor %}                                
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        <!--End Collapsible Accordion Panel Group   -->
+    </div>
+</div>
+
+<div class="clearfix"></div>    
+{% endblock %}

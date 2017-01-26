@@ -1,0 +1,113 @@
+{% extends "ModeloBundle::layout.html.twig" %}
+{% block content %}
+
+    <div class="row">
+        <!-- Page Header -->
+        <div class="col-lg-12">
+            <h1 class="page-header"></h1>
+        </div>
+        <!--End Page Header -->
+    </div>
+
+    <div class="row">
+        <!-- Welcome -->
+        <div class="col-lg-12">
+            <a href="{{path("campeonatos")}}">
+                <button type="button" class="btn btn-success">Campeonatos</button> 
+            </a>
+            <a href="{{path("campeonato_update",{"id":campeonato.id})}}">
+                <button type="button" class="btn btn-warning">Editar</button> 
+            </a>
+            <a href="{{path("campeonato_delete",{"id":campeonato.id})}}">
+                <button type="button" class="btn btn-danger">Eliminar</button>
+            </a>
+            <a href="#">
+                <button type="button" class="btn btn-info">Imprimir</button>
+            </a>            
+            <hr/>
+        </div>
+        <!--end  Welcome -->
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <!--Collapsible Accordion Panel Group   -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Collapsible Accordion Panel Group
+                </div>
+                <div class="panel-body">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Collapsible Group Item #1</a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Collapsible Group Item #2</a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Collapsible Group Item #3</a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Collapsible Accordion Panel Group   -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <!--Area chart example -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>Detalle Campeonato                   
+                </div>
+                <div class="panel-body"> 
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="input-group-addon">Nombre del Campeonato</span>                     
+                            <input type="text" class="form-control" value="{{campeonato.nombre}}" disabled>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="input-group-addon">Descripcion</span>
+                            <input type="text" class="form-control" value="{{campeonato.descripcion}}" disabled>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="input-group-addon">Disciplina Deportiva</span>
+                            <input type="text" class="form-control" value="{{campeonato.iddisciplina.nombre}}" disabled>
+                        </li>                        
+                    </ul>                  
+                </div>
+            </div>
+            <!--End area chart example -->
+        </div>
+    </div>
+
+    <div class="clearfix"></div>    
+{% endblock %}

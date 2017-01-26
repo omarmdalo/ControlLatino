@@ -12,7 +12,7 @@
     <div class="row">
                 <!-- Welcome -->
         <div class="col-lg-12">
-            <a href="{{path("disciplina_add")}}" class="btn btn-success btn-lg">
+            <a href="{{path("campeonato_add")}}" class="btn btn-success btn-lg">
                 <span class="glyphicon glyphicon-plus"></span> 
             </a>
             <a href="#" class="btn btn-success btn-lg">
@@ -35,7 +35,7 @@
             <!-- Advanced Tables -->
             <div class="panel panel-default">
                 <div class="panel-heading">
-                     Listado de Disciplinas
+                     Listado de Campeonatos
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
@@ -44,24 +44,36 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Descripcion</th>
-                                    <th>Lugar</th>                                    
+                                    <th>Disciplina</th>
+                                    <th>Equipos</th>
+                                    <th>Partidos</th>                               
                                     <th>Editar</th>
                                     <th>Eliminar</th> 
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for disciplina in disciplinas %}
+                                {% for campeonato in campeonatos %}
                                 <tr>
-                                    <td>{{ disciplina.nombre }} </td>
-                                    <td>{{ disciplina.descripcion }} </td>
-                                    <td>{{ disciplina.lugar }} </td>                                    
+                                    <td>{{ campeonato.nombre }} </td>
+                                    <td>{{ campeonato.descripcion }} </td>
+                                    <td>{{ campeonato.iddisciplina.nombre }} </td>
                                     <td> 
-                                        <a href="{{path("disciplina_update",{"id":disciplina.id})}}">
+                                        <a href="#">
+                                            <button type="button" class="btn btn-info">Equipos</button> 
+                                        </a>
+                                    </td>
+                                    <td> 
+                                        <a href="#">
+                                            <button type="button" class="btn btn-info">Partidos</button> 
+                                        </a>
+                                    </td>
+                                    <td> 
+                                        <a href="{{path("campeonato_update",{"id":campeonato.id})}}">
                                             <button type="button" class="btn btn-primary">Editar</button> 
                                         </a>
                                     </td>
                                     <td>
-                                         <a href="{{path("disciplina_delete",{"id":disciplina.id})}}">
+                                         <a href="{{path("campeonato_delete",{"id":campeonato.id})}}">
                                             <button type="button" class="btn btn-danger">Eliminar</button>
                                         </a>  
                                     </td>

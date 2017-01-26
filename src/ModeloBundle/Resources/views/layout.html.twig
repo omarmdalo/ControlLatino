@@ -282,11 +282,6 @@
                     <li>
                         <!-- user image section-->
                         <div class="user-section">
-                            <div class="user-section-inner">
-                                {% if app.user != null %}
-                                <img src="{{ asset('img/user.jpg') }}" alt="">
-                                {% endif %}
-                            </div>
                             <div class="user-info">                                
                                 {% if app.user != null %}
                                 <div><strong>{{app.user.nombre}}</strong></div>
@@ -303,18 +298,6 @@
                             </div>
                         </div>
                         <!--end user image section-->
-                    </li>
-                    <li class="sidebar-search">
-                        <!-- search section-->
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                        <!--end search section-->
                     </li>
                     <li class="selected">
                         <a href="{{path("modelo_homepage")}}"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
@@ -354,19 +337,48 @@
                             </li>
                         </ul>
                         <!-- second-level-items -->
-                    </li>
+                    </li>                    
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Disciplinas<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-sitemap fa-fw"></i>Deportes<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{path("disciplinas")}}">Listar</a>
+                                <a href="#">Campeonato<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="{{path("campeonatos")}}">Listar</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{path("campeonato_add")}}">Agregar</a>
+                                    </li>
+                                </ul>
+                                <!-- third-level-items -->
                             </li>
                             <li>
-                                <a href="{{path("disciplina_add")}}">Agregar</a>
+                                <a href="#">Equipos<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="{{path("equipos")}}">Listar</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{path("equipo_add")}}">Agregar</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Disciplinas<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="{{path("disciplinas")}}">Listar</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{path("disciplina_add")}}">Agregar</a>
+                                    </li>
+                                </ul>
+                                <!-- third-level-items -->
                             </li>
                         </ul>
                         <!-- second-level-items -->
-                    </li> 
+                    </li>
                 </ul>
                 <!-- end side-menu -->
             </div>

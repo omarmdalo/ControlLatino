@@ -20,6 +20,10 @@ socios:
     path:     /socio
     defaults: { _controller: ModeloBundle:Socio:index }
 
+socios_search:    
+    path:     /socio/search
+    defaults: { _controller: ModeloBundle:Socio:search }
+
 socio_detail:
     path:     /socio/detalle/{id}
     defaults: { _controller: ModeloBundle:Socio:detailSocio }
@@ -68,8 +72,9 @@ ficha_delete:
     path:     /ficha/delete/{id}
     defaults: { _controller: ModeloBundle:Ficha:deleteFicha }
     
+    
 disciplinas:    
-    path:     /disciplinas/list
+    path:     /disciplina/list
     defaults: { _controller: ModeloBundle:Disciplina:index}
 
 disciplina_add:    
@@ -83,3 +88,43 @@ disciplina_update:
 disciplina_delete:
     path:     /disciplina/delete/{id}
     defaults: { _controller: ModeloBundle:Disciplina:deleteDisciplina }
+   
+campeonatos:    
+    path:     /campeonato/list
+    defaults: { _controller: ModeloBundle:Campeonato:index}
+
+campeonato_add:    
+    path:     /campeonato/add
+    defaults: { _controller: ModeloBundle:Campeonato:addCampeonato }
+
+campeonato_update:
+    path:     /campeonato/update/{id}
+    defaults: { _controller: ModeloBundle:Campeonato:updateCampeonato } 
+    
+campeonato_delete:
+    path:     /campeonato/delete/{id}
+    defaults: { _controller: ModeloBundle:Campeonato:deleteCampeonato }
+    
+campeonato_detail:
+    path:     /campeonato/detalle/{id}
+    defaults: { _controller: ModeloBundle:Campeonato:detailCampeonato }
+    
+equipos:    
+    path:     /equipo/list
+    defaults: { _controller: ModeloBundle:Equipo:index}
+
+equipo_add:    
+    path:     /equipo/add
+    defaults: { _controller: ModeloBundle:Equipo:addEquipo }
+
+equipo_update:
+    path:     /equipo/update/{id}
+    defaults: { _controller: ModeloBundle:Equipo:updateEquipo } 
+    
+equipo_delete:
+    path:     /equipo/delete/{id}
+    defaults: { _controller: ModeloBundle:Equipo:deleteEquipo }
+    
+equipo_detail:
+    path:     /equipo/detalle/{id}
+    defaults: { _controller: ModeloBundle:Equipo:detailEquipo }
