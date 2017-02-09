@@ -1,0 +1,24 @@
+
+socios:    
+    path:     /list
+    defaults: { _controller: ModeloBundle:Socio:index }
+
+socio_add:    
+    path:     /add
+    defaults: { _controller: ModeloBundle:Socio:addSocio }
+
+socios_search:    
+    path:     /search
+    defaults: { _controller: ModeloBundle:Socio:search }
+
+socio_detail:
+    path:     /detalle/{id}
+    defaults: { _controller: ModeloBundle:Socio:detailSocio }
+   
+socio_delete:
+    path:     /delete/{id}
+    defaults: { _controller: ModeloBundle:Socio:deleteSocio }
+    
+socio_update:
+    path:     /update/{id}
+    defaults: { _controller: ModeloBundle:Socio:updateSocio }

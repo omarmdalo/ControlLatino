@@ -1,0 +1,48 @@
+{% extends "ModeloBundle::layout.html.twig" %}
+{% block content %}
+
+    <div class="row">
+        <!-- Page Header -->
+        <div class="col-lg-12">
+            <h1 class="page-header"></h1>
+        </div>
+        <!--End Page Header -->
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <!--Area chart example -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-edit fa-fw"></i>Editar Departamento                  
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        {{form_start(form,{ 'enctype':'multipart/form-data' })}}
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Nombre</span>                     
+                                    {{form_widget(form.nombre)}}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Descripcion</span>
+                                    {{form_widget(form.descripcion)}}
+                                </li>                       
+                            </ul>
+                        </div>  
+
+                        <div class="col-lg-2 col-lg-offset-5">         
+                            {{form_widget(form.guardar)}}
+                        </div>
+                        {{form_end(form)}}
+                    </div>
+                </div>
+            </div>
+            <!--End area chart example -->
+        </div>
+    </div>
+
+    <div class="clearfix"></div>    
+{% endblock %}

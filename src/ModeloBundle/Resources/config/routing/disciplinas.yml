@@ -1,0 +1,15 @@
+disciplinas:    
+    path:     /list
+    defaults: { _controller: ModeloBundle:Disciplina:index}
+
+disciplina_add:    
+    path:     /add
+    defaults: { _controller: ModeloBundle:Disciplina:addDisciplina }
+
+disciplina_update:
+    path:     /update/{id}
+    defaults: { _controller: ModeloBundle:Disciplina:updateDisciplina } 
+    
+disciplina_delete:
+    path:     /delete/{id}
+    defaults: { _controller: ModeloBundle:Disciplina:deleteDisciplina }

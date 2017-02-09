@@ -1,0 +1,80 @@
+{% extends "ModeloBundle::layout.html.twig" %}
+{% block content %}
+
+    <div class="row">
+        <!-- Page Header -->
+        <div class="col-lg-12">
+            <h1 class="page-header"></h1>
+        </div>
+        <!--End Page Header -->
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <!--Area chart example -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-edit fa-fw"></i>Editar Empleado                  
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        {{form_start(form,{ 'enctype':'multipart/form-data' })}}
+                        <div class="col-lg-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Nombres</span>                     
+                                    {{form_widget(form.nombres)}}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Apellidos</span>
+                                    {{form_widget(form.apellidos)}}
+                                </li>                       
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Cedula</span>
+                                    {{form_widget(form.cedula)}}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Fecha Nacimiento</span>
+                                    {{form_widget(form.nacimiento)}}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Codigo Barras Anterior</span>
+                                    {{form_widget(form.old)}}
+                                </li>
+                            </ul>
+                        </div>  
+
+                        <div class="col-lg-6">                          
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Imagen de Perfil</span>
+                                    {{form_widget(form.imagen)}}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Estado ingreso</span>
+                                    {{form_widget(form.estado)}}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Departamento</span>
+                                    {{form_widget(form.iddepartamento)}}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Cargo</span>
+                                    {{form_widget(form.idcargo)}}
+                                </li>                              
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-lg-offset-5">         
+                            {{form_widget(form.guardar)}}
+                        </div>
+                        {{form_end(form)}}
+                    </div>
+                </div>
+            </div>
+            <!--End area chart example -->
+        </div>
+    </div>
+
+    <div class="clearfix"></div>    
+{% endblock %}

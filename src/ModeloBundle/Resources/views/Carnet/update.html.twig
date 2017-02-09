@@ -1,0 +1,52 @@
+{% extends "ModeloBundle::layout.html.twig" %}
+{% block content %}
+    
+    <div class="row">
+        <!-- Page Header -->
+        <div class="col-lg-12">
+            <h1 class="page-header"></h1>
+        </div>
+        <!--End Page Header -->
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <!--Area chart example -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-edit fa-fw"></i>Emitir Carnet : {{ datos.nombres }} {{datos.apellidos}}                   
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        {{form_start(form,{ 'enctype':'multipart/form-data' })}}
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Fecha Emision</span>                     
+                                    {{form_widget(form.emision)}}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Fecha Vencimiento</span>
+                                    {{form_widget(form.vencimiento)}}
+                                </li>                       
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Codigo de Barras</span>
+                                    {{form_widget(form.codigo)}}
+                                </li>
+                            </ul>
+                        </div>  
+
+                        <div class="col-lg-2 col-lg-offset-5">         
+                        {{form_widget(form.guardar)}}
+                        </div>
+                    {{form_end(form)}}
+                    </div>
+                </div>
+            </div>
+            <!--End area chart example -->
+        </div>
+    </div>
+    
+    <div class="clearfix"></div>    
+{% endblock %}

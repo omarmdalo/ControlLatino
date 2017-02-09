@@ -31,6 +31,18 @@ ModeloBundle\Entity\Campeonato:
                 fixed: false
                 comment: 'Descripcion Campeonato'
             column: Descripcion
+        fechaIni:
+            type: date
+            nullable: false
+            options:
+                comment: 'Fecha Inicio'
+            column: fecha_ini
+        fechaFin:
+            type: date
+            nullable: false
+            options:
+                comment: 'Fecha Fin'
+            column: fecha_fin
     manyToOne:
         iddisciplina:
             targetEntity: Disciplina

@@ -47,11 +47,37 @@ ModeloBundle\Entity\Familiar:
             options:
                 fixed: false
                 comment: Cedula
-        fecha:
+        edad:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Edad familiar'
+        nacimiento:
+            type: date
+            nullable: false
+            options:
+                comment: 'Fecha nacimiento'
+        registro:
             type: date
             nullable: false
             options:
                 comment: 'Fecha de Ingreso'
+        actualizacion:
+            type: date
+            nullable: true
+            options:
+                comment: 'fecha actualizacion'
+        emision:
+            type: date
+            nullable: true
+            options:
+                comment: 'fecha emision'
+        vencimiento:
+            type: date
+            nullable: true
+            options:
+                comment: vencimiento
         imagen:
             type: string
             nullable: true
@@ -66,6 +92,13 @@ ModeloBundle\Entity\Familiar:
             options:
                 fixed: false
                 comment: 'Codigo de Barras'
+        old:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: 'Codigo Anterior'
     manyToOne:
         idsocio:
             targetEntity: Socio

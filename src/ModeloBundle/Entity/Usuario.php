@@ -200,7 +200,7 @@ class Usuario implements UserInterface
 
     public function eraseCredentials() {
         
-    }
+}
 
     public function getRoles() {
          return array($this->getRole());

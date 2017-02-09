@@ -24,7 +24,7 @@ class SocioController extends Controller {
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $query, $request->query->getInt('page', 1), 5
+                $query, $request->query->getInt('page', 1), 10
         );
         
 //    $em = $this->getDoctrine()->getEntityManager();
@@ -51,20 +51,36 @@ class SocioController extends Controller {
                 if (count($socio) == 0) {
 
                     $socio = new Socio();
-                    //Extraer data de formulario
+                    //Datos del Socio
                     $socio->setNombres($form->get("nombres")->getData());
                     $socio->setApellidos($form->get("apellidos")->getData());
                     $socio->setCedula($form->get("cedula")->getData());
+                    $socio->setNacimiento($form->get("nacimiento")->getData());
                     $socio->setRazonSocial($form->get("razonSocial")->getData());
                     $socio->setRif($form->get("rif")->getData());
-                    $socio->setFecha(new \DateTime("now"));
+                    
+                    //Fecha Registro y ultima actualizacion 
+                    $socio->setRegistro(new \DateTime("now"));
+                    $socio->setActualizado(new \DateTime("now"));
+                            
+                    //Fecha Registro y ultima actualizacion
+                    $socio->setEmision(null);
+                    $socio->setVencimiento(null);        
+                    
+                  
 
                     //Generamos Codigo de Barras (Repositorio Asociados)                 
                     $codigo = $socio_repo->GenerarCodigo($form->get("accion")->getData());
-
                     $socio->setCodigo($codigo);
+                    //Guardamos codigo de barra carnetizacion anterior
                     $socio->setOld($form->get("old")->getData());
 
+                    //Guardamos numero de accion de contrato
+                    $socio->setAccion($form->get("accion")->getData());
+                    
+                    //Estado de ingreso
+                    $socio->setSolvente($form->get("solvente")->getData());
+                    
                     //Imagen Perfil
                     $file = $form["imagen"]->getData();
                     if (!empty($file) && $file != null) {
@@ -77,8 +93,7 @@ class SocioController extends Controller {
                         $socio->setImagen(null);
                     }
 
-                    $socio->setAccion($form->get("accion")->getData());
-                    $socio->setSolvente($form->get("solvente")->getData());
+                    //Guardamos Tipo de Socio
                     $socio->setIdtiposocio($form->get("idtiposocio")->getData());
 
                     $em = $this->getDoctrine()->getEntityManager();
@@ -112,7 +127,12 @@ class SocioController extends Controller {
         $socio_repo = $em->getRepository("ModeloBundle:Socio");
         $socio = $socio_repo->find($id);
         $em->remove($socio);
-        $em->flush();
+        $flush = $em->flush();
+        if ($flush == null) {
+            $status = "Socio Eliminado";
+        } else {
+            $status = "Socio no ha sido Eliminado";
+        } 
         return $this->redirectToRoute("socios");
     }
 
@@ -128,15 +148,26 @@ class SocioController extends Controller {
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
-                //Extraer data de formulario
+                
+                //Datos del Socio
                 $socio->setNombres($form->get("nombres")->getData());
                 $socio->setApellidos($form->get("apellidos")->getData());
                 $socio->setCedula($form->get("cedula")->getData());
+                $socio->setNacimiento($form->get("nacimiento")->getData());
                 $socio->setRazonSocial($form->get("razonSocial")->getData());
                 $socio->setRif($form->get("rif")->getData());
-
+                
+                //Fecha Registro y ultima actualizacion 
+                $socio->setActualizado(new \DateTime("now"));
+                
+                //Codigo de barra carnetizacion anterior
                 $socio->setOld($form->get("old")->getData());
-
+                
+                //Guardamos numero de accion de contrato
+                $socio->setAccion($form->get("accion")->getData());
+                    
+                //Estado de ingreso
+                $socio->setSolvente($form->get("solvente")->getData());
 
                 //Imagen Perfil
                 $file = $form["imagen"]->getData();
@@ -150,8 +181,7 @@ class SocioController extends Controller {
                     $socio->setImagen($per_imagen);
                 }
 
-                $socio->setAccion($form->get("accion")->getData());
-                $socio->setSolvente($form->get("solvente")->getData());
+                //Tipo de Socio
                 $socio->setIdtiposocio($form->get("idtiposocio")->getData());
 
 
@@ -173,7 +203,6 @@ class SocioController extends Controller {
                     "form" => $form->createView()
         ));
 
-        //return $this->redirectToRoute("asociados");
     }
 
     public function detailSocioAction($id) {
@@ -201,13 +230,15 @@ class SocioController extends Controller {
                 . "OR u.apellidos LIKE :search "
                 . "OR u.cedula LIKE :search "
                 . "OR u.accion LIKE :search "
+                . "OR u.codigo LIKE :search "
+                . "OR u.old LIKE :search "
                 . "ORDER BY u.accion ASC";
         
         $query = $em->createQuery($dql)->setParameter('search', "%$search%");
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $query, $request->query->getInt('page', 1), 5
+                $query, $request->query->getInt('page', 1), 10
         );
         
 //    $em = $this->getDoctrine()->getEntityManager();

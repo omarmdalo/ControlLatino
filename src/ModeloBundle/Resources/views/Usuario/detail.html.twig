@@ -1,0 +1,158 @@
+{% extends "ModeloBundle::layout.html.twig" %}
+{% block content %}
+
+    <!-- Cabecera -->
+    <div class="row">       
+        <div class="col-lg-12">
+            <h1 class="page-header"></h1>
+        </div>
+    </div>
+
+    <!-- Opciones ficha de Socio -->    
+    <div class="row">                
+        <div class="col-lg-12">
+            <a href="{{path("usuarios")}}">
+                <button type="button" class="btn btn-success">Asociados</button> 
+            </a>
+            <a href="{{path("usuario_update",{"id":usuario.idusuario})}}">
+                <button type="button" class="btn btn-warning">Editar</button> 
+            </a>
+            <a href="{{path("usuario_delete",{"id":usuario.idusuario})}}">
+                <button type="button" class="btn btn-danger">Eliminar</button>
+            </a>
+            <a href="#">
+                <button type="button" class="btn btn-info">Imprimir</button>
+            </a>            
+            <hr/>
+        </div>                
+    </div>
+
+    <!-- Ficha de Asociados Acordeon -->                    
+    <div class="row">
+        <div class="col-lg-12">
+            <!--Collapsible Accordion Panel Group   -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Ficha Usuario
+                </div>
+                <div class="panel-body">
+                    <!-- Inicio Grupo Panel --> 
+                    <div class="panel-group" id="accordion">
+                        
+                        <!-- Panel Datos Asociado   -->
+                        <div class="panel panel-default">
+                            
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Datos del Usuario</a>
+                                </h4>
+                            </div>
+                            
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+
+                                    <div class="row">
+                                        
+                                        <div class="col-lg-6">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Nombre en Sistema</span>                     
+                                                    <input type="text" class="form-control" value="{{usuario.nombre}}" disabled>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Email</span>
+                                                    <input type="text" class="form-control" value="{{usuario.email}}" disabled>
+                                                </li>                       
+                                            </ul>
+                                        </div> 
+                                        <div class="col-lg-6">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Perfil de Usuario</span>
+                                                    <input type="text" class="form-control" value="{{usuario.role}}" disabled>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Fecha Ultima Actualizacion</span>
+                                                    <input type="text" class="form-control" value="{{usuario.caducidad | date('Y-m-d')}}" disabled>
+                                                </li>
+                                            </ul>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                        <!-- Fin Panel Datos Asociado   -->
+                        
+                        
+                        <!-- Panel Registro   -->
+                        <div class="panel panel-default">
+                            
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Datos Empleado</a>
+                                </h4>
+                            </div>
+                            
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+
+                                    <div class="row">
+                                        
+                                        <div class="col-lg-12">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <img width="100" src="{{ asset("uploads/empleado/"~usuario.idempleado.imagen) }}">
+                                                </li>
+                                            </ul>
+                                        </div>
+                                                                               
+                                        <div class="col-lg-6">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Nombres</span>                     
+                                                    <input type="text" class="form-control" value="{{usuario.idempleado.nombres}}" disabled>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Apellidos</span>
+                                                    <input type="text" class="form-control" value="{{usuario.idempleado.apellidos}}" disabled>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Cedula</span>
+                                                    <input type="text" class="form-control" value="{{usuario.idempleado.cedula}}" disabled>
+                                                </li> 
+                             
+                                            </ul>
+                                        </div>  
+                                                
+                                        <div class="col-lg-6">                          
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Edad</span>
+                                                    <input type="text" class="form-control" value="{{usuario.idempleado.edad}}" disabled>
+                                                </li> 
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Departamento</span>
+                                                    <input type="text" class="form-control" value="{{usuario.idempleado.iddepartamento.nombre}}" disabled>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Cargo</span>
+                                                    <input type="text" class="form-control" value="{{usuario.idempleado.idcargo.nombre}}" disabled>
+                                                </li>
+                                            </ul>
+                                        </div>  
+                                                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                        <!-- Fin Panel Datos Asociado   -->                        
+                                      
+                    </div>
+                    <!--Fin Grupo Panel -->                              
+                </div>                        
+            </div>
+        </div>
+    </div>
+                                            
+    <div class="clearfix"></div>    
+{% endblock %}

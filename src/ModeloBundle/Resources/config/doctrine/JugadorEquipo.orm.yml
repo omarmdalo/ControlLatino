@@ -17,6 +17,9 @@ ModeloBundle\Entity\JugadorEquipo:
         idJugador:
             columns:
                 - idJugador
+        IDX_F07A38F9A78DFB91:
+            columns:
+                - idEquipo
     id:
         id:
             type: integer
@@ -27,14 +30,6 @@ ModeloBundle\Entity\JugadorEquipo:
             id: true
             generator:
                 strategy: IDENTITY
-    fields:
-        idequipo:
-            type: integer
-            nullable: false
-            options:
-                unsigned: false
-                comment: 'Relacion con Equipo'
-            column: idEquipo
     manyToOne:
         idasociado:
             targetEntity: Asociado
@@ -64,6 +59,16 @@ ModeloBundle\Entity\JugadorEquipo:
             inversedBy: null
             joinColumns:
                 idJugador:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idequipo:
+            targetEntity: Equipo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idEquipo:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

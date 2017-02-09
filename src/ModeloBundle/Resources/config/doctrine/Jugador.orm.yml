@@ -37,6 +37,37 @@ ModeloBundle\Entity\Jugador:
             options:
                 fixed: false
                 comment: 'Cedula Identidad Jugador'
+        edad:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Edad jugador'
+        nacimiento:
+            type: date
+            nullable: false
+            options:
+                comment: 'Fecha Nacimiento'
+        registro:
+            type: date
+            nullable: false
+            options:
+                comment: 'Fecha registro'
+        actualizacion:
+            type: date
+            nullable: true
+            options:
+                comment: 'Fecha Ultima Actualizacion'
+        emision:
+            type: date
+            nullable: true
+            options:
+                comment: 'Fecha emisión carnet'
+        vencimiento:
+            type: date
+            nullable: true
+            options:
+                comment: 'Fecha vencimiento carnet'
         codigo:
             type: string
             nullable: true
@@ -44,11 +75,6 @@ ModeloBundle\Entity\Jugador:
             options:
                 fixed: false
                 comment: 'Codigo Carnet afiliado'
-        fecha:
-            type: date
-            nullable: true
-            options:
-                comment: 'Fecha Afiliacion'
         numafiliacion:
             type: string
             nullable: true

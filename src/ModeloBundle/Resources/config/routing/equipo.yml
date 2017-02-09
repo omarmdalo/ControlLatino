@@ -1,0 +1,19 @@
+equipos:    
+    path:     /list
+    defaults: { _controller: ModeloBundle:Equipo:index}
+
+equipo_add:    
+    path:     /add
+    defaults: { _controller: ModeloBundle:Equipo:addEquipo }
+
+equipo_update:
+    path:     /update/{id}
+    defaults: { _controller: ModeloBundle:Equipo:updateEquipo } 
+    
+equipo_delete:
+    path:     /delete/{id}
+    defaults: { _controller: ModeloBundle:Equipo:deleteEquipo }
+    
+equipo_detail:
+    path:     /detalle/{id}
+    defaults: { _controller: ModeloBundle:Equipo:detailEquipo }

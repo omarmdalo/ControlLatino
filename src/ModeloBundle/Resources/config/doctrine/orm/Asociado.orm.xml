@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Asociado" table="asociado">
+    <indexes>
+      <index name="TSocios_idSocio" columns="idSocio"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="cedula" columns="cedula"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombres" type="string" column="nombres" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Nombres Asociado</option>
+      </options>
+    </field>
+    <field name="apellidos" type="string" column="apellidos" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Apellido Asociado</option>
+      </options>
+    </field>
+    <field name="cedula" type="string" column="cedula" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Cedula identidad asociado</option>
+      </options>
+    </field>
+    <field name="edad" type="integer" column="edad" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Edad Asociado</option>
+      </options>
+    </field>
+    <field name="nacimiento" type="date" column="nacimiento" nullable="false">
+      <options>
+        <option name="comment">Fecha Nacimiento</option>
+      </options>
+    </field>
+    <field name="registro" type="date" column="registro" nullable="false">
+      <options>
+        <option name="comment">Fecha registro Asociado</option>
+      </options>
+    </field>
+    <field name="actualizacion" type="date" column="actualizacion" nullable="true">
+      <options>
+        <option name="comment">Fecha de Actulizacion</option>
+      </options>
+    </field>
+    <field name="emision" type="date" column="emision" nullable="true">
+      <options>
+        <option name="comment">Fecha Emision Carnet</option>
+      </options>
+    </field>
+    <field name="vencimiento" type="date" column="vencimiento" nullable="true">
+      <options>
+        <option name="comment">Fecha de Vencimeinto</option>
+      </options>
+    </field>
+    <field name="numasociado" type="string" column="numasociado" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Numero Asociado</option>
+      </options>
+    </field>
+    <field name="codigo" type="string" column="codigo" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Codigo asociado</option>
+      </options>
+    </field>
+    <field name="solvente" type="boolean" column="solvente" nullable="false">
+      <options>
+        <option name="comment">Campo Logico de Solvencia</option>
+      </options>
+    </field>
+    <field name="imagen" type="string" column="imagen" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Ruta de Imagen</option>
+      </options>
+    </field>
+    <many-to-one field="idsocio" target-entity="Socio" fetch="LAZY">
+      <join-columns>
+        <join-column name="idSocio" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

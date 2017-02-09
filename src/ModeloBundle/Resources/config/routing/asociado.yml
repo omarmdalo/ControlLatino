@@ -1,0 +1,23 @@
+asociados:    
+    path:     /list
+    defaults: { _controller: ModeloBundle:Asociado:index }
+
+asociado_add:    
+    path:     /add
+    defaults: { _controller: ModeloBundle:Asociado:addAsociado }
+
+asociado_update:
+    path:     /update/{id}
+    defaults: { _controller: ModeloBundle:Asociado:updateAsociado } 
+    
+asociado_delete:
+    path:     /delete/{id}
+    defaults: { _controller: ModeloBundle:Asociado:deleteAsociado }
+
+asociado_detail:
+    path:     /detalle/{id}
+    defaults: { _controller: ModeloBundle:Asociado:detailAsociado }
+    
+asociado_search:    
+    path:     /search
+    defaults: { _controller: ModeloBundle:Asociado:search }

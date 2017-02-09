@@ -42,11 +42,37 @@ ModeloBundle\Entity\Asociado:
             options:
                 fixed: false
                 comment: 'Cedula identidad asociado'
-        fecha:
+        edad:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Edad Asociado'
+        nacimiento:
+            type: date
+            nullable: false
+            options:
+                comment: 'Fecha Nacimiento'
+        registro:
             type: date
             nullable: false
             options:
                 comment: 'Fecha registro Asociado'
+        actualizacion:
+            type: date
+            nullable: true
+            options:
+                comment: 'Fecha de Actulizacion'
+        emision:
+            type: date
+            nullable: true
+            options:
+                comment: 'Fecha Emision Carnet'
+        vencimiento:
+            type: date
+            nullable: true
+            options:
+                comment: 'Fecha de Vencimeinto'
         numasociado:
             type: string
             nullable: false

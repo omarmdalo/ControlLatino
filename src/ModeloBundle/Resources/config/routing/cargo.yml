@@ -1,0 +1,20 @@
+cargos:    
+    path:     /list
+    defaults: { _controller: ModeloBundle:Cargo:index }
+
+cargo_add:    
+    path:     /add
+    defaults: { _controller: ModeloBundle:Cargo:addCargo }
+
+cargo_update:
+    path:     /update/{id}
+    defaults: { _controller: ModeloBundle:Cargo:updateCargo } 
+    
+cargo_delete:
+    path:     /delete/{id}
+    defaults: { _controller: ModeloBundle:Cargo:deleteCargo }
+    
+cargo_search:    
+    path:     /search
+    defaults: { _controller: ModeloBundle:Cargo:search }
+    

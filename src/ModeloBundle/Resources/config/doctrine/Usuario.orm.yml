@@ -2,7 +2,7 @@ ModeloBundle\Entity\Usuario:
     type: entity
     table: usuario
     indexes:
-        TEmpleado_idEmpleado:
+        idEmpleado:
             columns:
                 - idEmpleado
     uniqueConstraints:

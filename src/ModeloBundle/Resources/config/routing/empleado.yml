@@ -1,0 +1,23 @@
+empleados:    
+    path:     /list
+    defaults: { _controller: ModeloBundle:Empleado:index }
+
+empleado_add:    
+    path:     /add
+    defaults: { _controller: ModeloBundle:Empleado:addEmpleado }
+
+empleado_update:
+    path:     /update/{id}
+    defaults: { _controller: ModeloBundle:Empleado:updateEmpleado } 
+    
+empleado_delete:
+    path:     /delete/{id}
+    defaults: { _controller: ModeloBundle:Empleado:deleteEmpleado }
+
+empleado_detail:
+    path:     /detalle/{id}
+    defaults: { _controller: ModeloBundle:Empleado:detailEmpleado }
+    
+empleado_search:    
+    path:     /search
+    defaults: { _controller: ModeloBundle:Empleado:search }

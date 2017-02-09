@@ -1,0 +1,23 @@
+usuarios:    
+    path:     /list
+    defaults: { _controller: ModeloBundle:Usuario:index }
+
+usuario_add:    
+    path:     /add
+    defaults: { _controller: ModeloBundle:Usuario:addUsuario }
+
+usuario_update:
+    path:     /update/{id}
+    defaults: { _controller: ModeloBundle:Usuario:updateUsuario } 
+    
+usuario_delete:
+    path:     /delete/{id}
+    defaults: { _controller: ModeloBundle:Usuario:deleteUsuario }
+    
+usuario_detail:
+    path:     /detalle/{id}
+    defaults: { _controller: ModeloBundle:Usuario:detailUsuario }
+    
+usuario_search:    
+    path:     /search
+    defaults: { _controller: ModeloBundle:Usuario:search } 

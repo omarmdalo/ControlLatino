@@ -2,34 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/views/Ficha/add.html.twig</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/views/index.html</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/views/Disciplina/add.html.twig</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Repository/FichaRepository.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Entity/Disciplina.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Controller/FichaController.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/views/Asociado/index.html.twig</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Form/FichaType.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Controller/CampeonatoController.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/views/Campeonato/add.html.twig</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Form/DisciplinaType.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Form/CampeonatoType.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Controller/DefaultController.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Controller/DisciplinaController.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/views/Ficha/index.html.twig</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/config/routing.yml</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/config/doctrine/Asociado.orm.yml</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/views/Asociado/add.html.twig</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/views/Ficha/update.html.twig</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Form/AsociadoType.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Form/SocioType.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Controller/AsociadoController.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/views/layout.html.twig</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Entity/Campeonato.php</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/views/Campeonato/index.html.twig</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Resources/views/Disciplina/index.html.twig</file>
-            <file>file:/C:/wamp/www/latino/src/ModeloBundle/Controller/SocioController.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

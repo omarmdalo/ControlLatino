@@ -1,0 +1,19 @@
+departamentos:    
+    path:     /list
+    defaults: { _controller: ModeloBundle:Departamento:index }
+
+departamento_add:    
+    path:     /add
+    defaults: { _controller: ModeloBundle:Departamento:addDepartamento }
+
+departamento_update:
+    path:     /update/{id}
+    defaults: { _controller: ModeloBundle:Departamento:updateDepartamento } 
+    
+departamento_delete:
+    path:     /delete/{id}
+    defaults: { _controller: ModeloBundle:Departamento:deleteDepartamento }
+    
+departamento_search:    
+    path:     /search
+    defaults: { _controller: ModeloBundle:Departamento:search }

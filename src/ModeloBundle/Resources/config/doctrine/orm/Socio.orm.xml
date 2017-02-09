@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Socio" table="socio">
+    <indexes>
+      <index name="TTipoSocio_idTipoSocio" columns="idTipoSocio"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="cedula" columns="cedula,accion"/>
+      <unique-constraint name="rif" columns="rif"/>
+      <unique-constraint name="old" columns="old"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombres" type="string" column="nombres" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Nombre del Socio</option>
+      </options>
+    </field>
+    <field name="apellidos" type="string" column="apellidos" length="45" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Apellidos del Socio</option>
+      </options>
+    </field>
+    <field name="cedula" type="string" column="cedula" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Cedula identidad Socio</option>
+      </options>
+    </field>
+    <field name="edad" type="integer" column="edad" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="comment">Edad</option>
+      </options>
+    </field>
+    <field name="razonSocial" type="string" column="razon_social" length="45" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Nombre Empresa</option>
+      </options>
+    </field>
+    <field name="rif" type="string" column="rif" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Registro de Informacion fiscal</option>
+      </options>
+    </field>
+    <field name="registro" type="date" column="registro" nullable="false">
+      <options>
+        <option name="comment">Fecha compra accion del socio</option>
+      </options>
+    </field>
+    <field name="nacimiento" type="date" column="nacimiento" nullable="false">
+      <options>
+        <option name="comment">Nacimiento socio</option>
+      </options>
+    </field>
+    <field name="emision" type="date" column="emision" nullable="true">
+      <options>
+        <option name="comment">emision carnet</option>
+      </options>
+    </field>
+    <field name="vencimiento" type="date" column="vencimiento" nullable="true">
+      <options>
+        <option name="comment">vencimiento carnet</option>
+      </options>
+    </field>
+    <field name="actualizado" type="date" column="actualizado" nullable="true">
+      <options>
+        <option name="comment">actualizacion socio</option>
+      </options>
+    </field>
+    <field name="accion" type="string" column="accion" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Numero de accion del Socio</option>
+      </options>
+    </field>
+    <field name="solvente" type="boolean" column="solvente" nullable="false">
+      <options>
+        <option name="comment">Campo Logico Solvencia</option>
+      </options>
+    </field>
+    <field name="imagen" type="string" column="imagen" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Ruta de imagen</option>
+      </options>
+    </field>
+    <field name="codigo" type="string" column="codigo" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Codigo de barras carnet</option>
+      </options>
+    </field>
+    <field name="old" type="string" column="old" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">Coficacion anterior</option>
+      </options>
+    </field>
+    <many-to-one field="idtiposocio" target-entity="Tiposocio" fetch="LAZY">
+      <join-columns>
+        <join-column name="idTipoSocio" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -11,120 +11,48 @@ logout:
 modelo_homepage:
     path:     /dashboard
     defaults: { _controller: ModeloBundle:Default:index }
-    
-socio_add:    
-    path:     /socio/add
-    defaults: { _controller: ModeloBundle:Socio:addSocio }
 
-socios:    
-    path:     /socio
-    defaults: { _controller: ModeloBundle:Socio:index }
+app_card:
+    resource: "@ModeloBundle/Resources/config/routing/card.yml"
+    prefix: /card
 
-socios_search:    
-    path:     /socio/search
-    defaults: { _controller: ModeloBundle:Socio:search }
+app_usuario:
+    resource: "@ModeloBundle/Resources/config/routing/usuario.yml"
+    prefix: /usuario
+    
+app_asociado:
+    resource: "@ModeloBundle/Resources/config/routing/asociado.yml"
+    prefix: /asociado
+    
+app_socio:
+    resource: "@ModeloBundle/Resources/config/routing/socio.yml"
+    prefix: /socio    
+    
+app_fichas:
+    resource: "@ModeloBundle/Resources/config/routing/fichas.yml"
+    prefix: /fichas   
+    
+app_disciplinas:
+    resource: "@ModeloBundle/Resources/config/routing/disciplinas.yml"
+    prefix: /disciplinas   
 
-socio_detail:
-    path:     /socio/detalle/{id}
-    defaults: { _controller: ModeloBundle:Socio:detailSocio }
-   
-socio_delete:
-    path:     /socio/delete/{id}
-    defaults: { _controller: ModeloBundle:Socio:deleteSocio }
-    
-socio_update:
-    path:     /socio/update/{id}
-    defaults: { _controller: ModeloBundle:Socio:updateSocio }
-    
-asociados:    
-    path:     /asociado
-    defaults: { _controller: ModeloBundle:Asociado:index }
+app_campeonato:
+    resource: "@ModeloBundle/Resources/config/routing/campeonato.yml"
+    prefix: /campeonato  
 
-asociado_add:    
-    path:     /asociado/add
-    defaults: { _controller: ModeloBundle:Asociado:addAsociado }
+app_equipo:
+    resource: "@ModeloBundle/Resources/config/routing/equipo.yml"
+    prefix: /equipo       
 
-asociado_update:
-    path:     /asociado/update/{id}
-    defaults: { _controller: ModeloBundle:Asociado:updateAsociado } 
-    
-asociado_delete:
-    path:     /asociado/delete/{id}
-    defaults: { _controller: ModeloBundle:Asociado:deleteAsociado }
+app_empleado:
+    resource: "@ModeloBundle/Resources/config/routing/empleado.yml"
+    prefix: /empleado     
 
-asociado_detail:
-    path:     /asociado/detalle/{id}
-    defaults: { _controller: ModeloBundle:Asociado:detailAsociado }
+app_departamento:
+    resource: "@ModeloBundle/Resources/config/routing/departamento.yml"
+    prefix: /departamento      
     
-fichas:    
-    path:     /ficha/list/{page}
-    defaults: { _controller: ModeloBundle:Ficha:index, page:1 }
-
-ficha_add:    
-    path:     /ficha/add
-    defaults: { _controller: ModeloBundle:Ficha:addFicha }
-
-ficha_update:
-    path:     /ficha/update/{id}
-    defaults: { _controller: ModeloBundle:Ficha:updateFicha } 
-    
-ficha_delete:
-    path:     /ficha/delete/{id}
-    defaults: { _controller: ModeloBundle:Ficha:deleteFicha }
-    
-    
-disciplinas:    
-    path:     /disciplina/list
-    defaults: { _controller: ModeloBundle:Disciplina:index}
-
-disciplina_add:    
-    path:     /disciplina/add
-    defaults: { _controller: ModeloBundle:Disciplina:addDisciplina }
-
-disciplina_update:
-    path:     /disciplina/update/{id}
-    defaults: { _controller: ModeloBundle:Disciplina:updateDisciplina } 
-    
-disciplina_delete:
-    path:     /disciplina/delete/{id}
-    defaults: { _controller: ModeloBundle:Disciplina:deleteDisciplina }
-   
-campeonatos:    
-    path:     /campeonato/list
-    defaults: { _controller: ModeloBundle:Campeonato:index}
-
-campeonato_add:    
-    path:     /campeonato/add
-    defaults: { _controller: ModeloBundle:Campeonato:addCampeonato }
-
-campeonato_update:
-    path:     /campeonato/update/{id}
-    defaults: { _controller: ModeloBundle:Campeonato:updateCampeonato } 
-    
-campeonato_delete:
-    path:     /campeonato/delete/{id}
-    defaults: { _controller: ModeloBundle:Campeonato:deleteCampeonato }
-    
-campeonato_detail:
-    path:     /campeonato/detalle/{id}
-    defaults: { _controller: ModeloBundle:Campeonato:detailCampeonato }
-    
-equipos:    
-    path:     /equipo/list
-    defaults: { _controller: ModeloBundle:Equipo:index}
-
-equipo_add:    
-    path:     /equipo/add
-    defaults: { _controller: ModeloBundle:Equipo:addEquipo }
-
-equipo_update:
-    path:     /equipo/update/{id}
-    defaults: { _controller: ModeloBundle:Equipo:updateEquipo } 
-    
-equipo_delete:
-    path:     /equipo/delete/{id}
-    defaults: { _controller: ModeloBundle:Equipo:deleteEquipo }
-    
-equipo_detail:
-    path:     /equipo/detalle/{id}
-    defaults: { _controller: ModeloBundle:Equipo:detailEquipo }
+app_cargo:
+    resource: "@ModeloBundle/Resources/config/routing/cargo.yml"
+    prefix: /cargo 
+ 

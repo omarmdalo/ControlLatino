@@ -1,0 +1,19 @@
+campeonatos:    
+    path:     /list
+    defaults: { _controller: ModeloBundle:Campeonato:index}
+
+campeonato_add:    
+    path:     /add
+    defaults: { _controller: ModeloBundle:Campeonato:addCampeonato }
+
+campeonato_update:
+    path:     /update/{id}
+    defaults: { _controller: ModeloBundle:Campeonato:updateCampeonato } 
+    
+campeonato_delete:
+    path:     /delete/{id}
+    defaults: { _controller: ModeloBundle:Campeonato:deleteCampeonato }
+    
+campeonato_detail:
+    path:     /detalle/{id}
+    defaults: { _controller: ModeloBundle:Campeonato:detailCampeonato }

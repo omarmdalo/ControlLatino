@@ -59,10 +59,10 @@
                                     <th>Nombres</th>
                                     <th>Apellidos</th>
                                     <th>Cedula</th>
-                                    <th>Tipo</th>
                                     <th>Codigo</th>
                                     <th>Accion</th>
                                     <th>Ingreso</th>
+                                    <th>Carnet</th>
                                     <th>Detalle</th>
                                     <th>Editar</th>
                                     <th>Eliminar</th> 
@@ -74,7 +74,6 @@
                                         <td>{{ socio.nombres }} </td>
                                         <td>{{ socio.apellidos }} </td>
                                         <td>{{ socio.cedula }} </td>
-                                        <td>{{ socio.idtiposocio.nombre }} </td>
                                         <td>{{ socio.codigo }} </td>
                                         <td>{{ socio.accion }} </td>
                                         <td>
@@ -89,6 +88,16 @@
                                             {% endif %}                                    
                                         </td>
                                         <td> 
+                                                {% if socio.emision == null %}
+                                                <a href="{{path("socio_card",{"id":socio.id})}}" class="btn btn-success btn-sm">
+                                                <span class="fa fa-key"> Emitir</span>
+                                                {% else %}
+                                                <a href="{{path("socio_card",{"id":socio.id})}}" class="btn btn-info btn-sm">
+                                                <span class="fa fa-key"> Renovar</span>
+                                                {% endif %}
+                                            </a>
+                                        </td>
+                                        <td>                                             
                                             <a href="{{path("socio_detail",{"id":socio.id})}}" class="btn btn-info btn-sm">
                                                 <span class="fa fa-user"></span> 
                                             </a>
@@ -118,9 +127,4 @@
     </div>
     <div class="clearfix"></div>
 
-    <script>
-        $(document).ready(function () {
-            $('#dataTables-example').dataTable();
-        });
-    </script>
 {% endblock %}

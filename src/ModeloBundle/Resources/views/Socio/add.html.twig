@@ -4,7 +4,7 @@
     <div class="row">
         <!-- Page Header -->
         <div class="col-lg-12">
-            <h1 class="page-header">Agregar Socio</h1>
+            <h1 class="page-header"></h1>
         </div>
         <!--End Page Header -->
     </div>
@@ -12,19 +12,72 @@
     <div class="row">
         <div class="col-lg-12">
             <!--Area chart example -->
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>Datos del Socio                    
+                    <i class="fa fa-plus fa-fw"></i>    Agregar Socio                 
                 </div>
 
                 <div class="panel-body">
-                    {% for message in app.session.flashbag().get('status') %}
-                    <div class="alert alert-danger">
-                        {{ message }}
-                    </div>
-                    {% endfor %}    
-                    {{form_start(form,{ 'enctype':'multipart/form-data' })}}
+                    <div class="row">
+                        {{form_start(form,{ 'enctype':'multipart/form-data' })}}
+                        <div class="col-lg-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Nombres</span>                     
+                                    {{form_widget(form.nombres)}}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Apellidos</span>
+                                    {{form_widget(form.apellidos)}}
+                                </li>                       
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Cedula</span>
+                                    {{form_widget(form.cedula)}}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Fecha Nacimiento</span>
+                                    {{form_widget(form.nacimiento)}}
+                                </li>                               
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Imagen de Perfil</span>
+                                    {{form_widget(form.imagen)}}
+                                </li>                                                             
+                            </ul>
+                        </div>  
+
+                        <div class="col-lg-6">                          
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Tipo de Socio</span>
+                                    {{form_widget(form.idtiposocio)}}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Razon Social</span>
+                                    {{form_widget(form.razonSocial)}}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Rif</span>
+                                    {{form_widget(form.rif)}}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Accion</span>
+                                    {{form_widget(form.accion)}}
+                                </li>   
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Estado ingreso</span>
+                                    {{form_widget(form.solvente)}}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="input-group-addon">Codigo Carnetizacion Anterior</span>
+                                    {{form_widget(form.old)}}
+                                </li>                               
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-lg-offset-5">         
+                        {{form_widget(form.guardar)}}
+                        </div>
                     {{form_end(form)}}
+                    </div>
                 </div>
             </div>
             <!--End area chart example -->

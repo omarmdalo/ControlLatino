@@ -49,6 +49,12 @@ ModeloBundle\Entity\Socio:
             options:
                 fixed: false
                 comment: 'Cedula identidad Socio'
+        edad:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: Edad
         razonSocial:
             type: string
             nullable: true
@@ -64,11 +70,31 @@ ModeloBundle\Entity\Socio:
             options:
                 fixed: false
                 comment: 'Registro de Informacion fiscal'
-        fecha:
+        registro:
             type: date
             nullable: false
             options:
                 comment: 'Fecha compra accion del socio'
+        nacimiento:
+            type: date
+            nullable: false
+            options:
+                comment: 'Nacimiento socio'
+        emision:
+            type: date
+            nullable: true
+            options:
+                comment: 'emision carnet'
+        vencimiento:
+            type: date
+            nullable: true
+            options:
+                comment: 'vencimiento carnet'
+        actualizado:
+            type: date
+            nullable: true
+            options:
+                comment: 'actualizacion socio'
         accion:
             type: string
             nullable: false

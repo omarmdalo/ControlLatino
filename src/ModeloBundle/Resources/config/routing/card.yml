@@ -1,0 +1,11 @@
+asociado_card:    
+    path:     /asociado/{id}
+    defaults: { _controller: ModeloBundle:Card:updateCardAsociado }    
+
+socio_card:    
+    path:     /socio/{id}
+    defaults: { _controller: ModeloBundle:Card:updateCardSocio }       
+
+empleado_card:
+    path:     /empleado/{id}
+    defaults: { _controller: ModeloBundle:Card:updateCardEmpleado } 

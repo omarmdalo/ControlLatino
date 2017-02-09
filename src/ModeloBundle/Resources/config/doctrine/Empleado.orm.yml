@@ -1,6 +1,7 @@
 ModeloBundle\Entity\Empleado:
     type: entity
     table: empleado
+    repositoryClass: ModeloBundle\Repository\EmpleadoRepository
     indexes:
         TDepartamento_idDepartamento:
             columns:
@@ -48,11 +49,37 @@ ModeloBundle\Entity\Empleado:
             options:
                 fixed: false
                 comment: 'Cedula Empleado'
-        fecha:
+        edad:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: 'Edad Empleado'
+        nacimiento:
             type: date
             nullable: false
             options:
-                comment: 'Fecha Ingreso'
+                comment: 'Fecha nacimiento'
+        registro:
+            type: date
+            nullable: false
+            options:
+                comment: 'Fecha registro'
+        actualizacion:
+            type: date
+            nullable: true
+            options:
+                comment: 'fecha actualizacion'
+        emision:
+            type: date
+            nullable: true
+            options:
+                comment: 'fecha emision'
+        vencimiento:
+            type: date
+            nullable: true
+            options:
+                comment: 'fecha vencimiento'
         estado:
             type: boolean
             nullable: false
@@ -65,6 +92,13 @@ ModeloBundle\Entity\Empleado:
             options:
                 fixed: false
                 comment: 'Codigo Carnet Empleado'
+        old:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+                comment: 'Codigo carnet anterior'
         imagen:
             type: string
             nullable: true

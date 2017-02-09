@@ -29,18 +29,18 @@ class FichaType extends AbstractType
                         )
                 )
             
-//            ->add('fecha', DateType::class, 
-//                    array(
-//                        'widget' => 'single_text',
-//                        "required"=>'required',
-//                        "format" => 'yyyy-MM-dd',
-//                        "attr"=> array(
-//                                    "class"=>"form-control input-inline datepicker",
-//                                    'data-provide' => 'datepicker',
-//                                    'data-date-format' => 'yyyy-mm-dd'
-//                                    )       
-//                        )
-//                )
+            ->add('fecha', DateType::class, 
+                    array(
+                        'widget' => 'single_text',
+                        "required"=>'required',
+                        "format" => 'yyyy-MM-dd',
+                        "attr"=> array(
+                                    "class"=>"form-group form-control input-inline datepicker",
+                                    'data-provide' => 'datepicker',
+                                    'data-date-format' => 'yyyy-mm-dd'
+                                    )       
+                        )
+                )
             
             ->add('idsocio', EntityType::class,
                     array(
