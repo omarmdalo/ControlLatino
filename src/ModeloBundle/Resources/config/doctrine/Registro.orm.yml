@@ -1,6 +1,7 @@
 ModeloBundle\Entity\Registro:
     type: entity
     table: registro
+    repositoryClass: ModeloBundle\Repository\RegistroRepository
     indexes:
         TJugador_idJugador:
             columns:

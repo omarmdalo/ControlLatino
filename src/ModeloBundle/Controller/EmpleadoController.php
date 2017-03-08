@@ -43,6 +43,7 @@ class EmpleadoController extends Controller {
                 $empleado_repo = $em->getRepository("ModeloBundle:Empleado");
                 $empleado = $empleado_repo->findOneBy(array("cedula" => $form->get("cedula")->getData()));
                 $codigo = "";
+                $edad =0;
                 if (count($empleado) == 0) {
 
                     $empleado = new Empleado();
@@ -51,6 +52,10 @@ class EmpleadoController extends Controller {
                     $empleado->setApellidos($form->get("apellidos")->getData());
                     $empleado->setCedula($form->get("cedula")->getData());
                     $empleado->setNacimiento($form->get("nacimiento")->getData());
+                    
+                    //Calculamos la edad
+                    $edad = $empleado_repo->CalcularEdad($form->get("nacimiento")->getData(), new \DateTime("now"));
+                    $empleado->setEdad($edad);
 
                     
                     //Fecha Registro y ultima actualizacion 
@@ -150,6 +155,10 @@ class EmpleadoController extends Controller {
                 $empleado->setApellidos($form->get("apellidos")->getData());
                 $empleado->setCedula($form->get("cedula")->getData());
                 $empleado->setNacimiento($form->get("nacimiento")->getData());
+                
+                //Calculamos la edad
+                $edad = $empleado_repo->CalcularEdad($form->get("nacimiento")->getData(), new \DateTime("now"));
+                $empleado->setEdad($edad);
                 
                 //Fecha Registro y ultima actualizacion 
                 $empleado->setActualizacion(new \DateTime("now"));

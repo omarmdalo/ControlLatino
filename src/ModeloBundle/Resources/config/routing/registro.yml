@@ -1,0 +1,7 @@
+registro:    
+    path:     /registro
+    defaults: { _controller: ModeloBundle:Registro:register }
+
+detalle:    
+    path:     /detalle
+    defaults: { _controller: ModeloBundle:Registro:detail }

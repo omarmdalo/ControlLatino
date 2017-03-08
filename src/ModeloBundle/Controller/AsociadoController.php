@@ -27,7 +27,7 @@ class AsociadoController extends Controller {
 
     $paginator = $this->get('knp_paginator');
     $pagination = $paginator->paginate(
-            $query, $request->query->getInt('page', 1), 5
+            $query, $request->query->getInt('page', 1), 10
     );    
     return $this->render("ModeloBundle:Asociado:index.html.twig", array(
                     "pagination" => $pagination
@@ -44,10 +44,9 @@ class AsociadoController extends Controller {
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getEntityManager();
                 $asociado_repo = $em->getRepository("ModeloBundle:Asociado");
-                $asociado = $asociado_repo->findOneBy(array("cedula" => $form->get("cedula")->getData()));
-                $num_aso = 0;
+                $asociado = $asociado_repo->findOneBy(array("cedula" => $form->get("cedula")->getData()));                
                 $codigo="";
-                $num_aso = $asociado_repo->findAll();
+                $num_aso="";
                 if (count($asociado) == 0) {
                     $asociado = new Asociado();
                     //Extraer data de formulario
@@ -55,9 +54,14 @@ class AsociadoController extends Controller {
                     $asociado->setApellidos($form->get("apellidos")->getData());
                     $asociado->setCedula($form->get("cedula")->getData());
                     $asociado->setNacimiento($form->get("nacimiento")->getData());
+                    
+                    
+                    //Calcular la Edad
+                    $edad = $asociado_repo->CalcularEdad($form->get("nacimiento")->getData(), new \DateTime("now"));
+                    $asociado->setEdad($edad);
                                         
                     //Hora Registro y Actualizacion
-                    $asociado->setFecha(new \DateTime("now"));
+                    $asociado->setRegistro(new \DateTime("now"));
                     $asociado->setActualizacion(new \DateTime("now"));
                     
                     //Generamos Codigo de Barras (Repositorio Asociados)                 
@@ -72,7 +76,8 @@ class AsociadoController extends Controller {
                     $asociado->setSolvente($form->get("solvente")->getData());
                     
                     //Numero de Asociado
-                    $asociado->setNumasociado((count($num_aso))+1);
+                    $num_aso=$asociado_repo->GenerarNumAsociado($form->get("idsocio")->getData());
+                    $asociado->setNumasociado($num_aso);
                     
                     //Carga de Imagen de Perfil
                     $file=$form["imagen"]->getData();
@@ -150,6 +155,10 @@ class AsociadoController extends Controller {
                     $asociado->setCedula($form->get("cedula")->getData());
                     $asociado->setNacimiento($form->get("nacimiento")->getData());
                     
+                    //Calcular la Edad
+                    $edad = $asociado_repo->CalcularEdad($form->get("nacimiento")->getData(), new \DateTime("now"));
+                    $asociado->setEdad($edad);
+                    
                     //Hora Actualizacion
                     $asociado->setActualizacion(new \DateTime("now"));
                     
@@ -196,8 +205,18 @@ class AsociadoController extends Controller {
     $em = $this->getDoctrine()->getEntityManager();
     $asociado_repo = $em->getRepository("ModeloBundle:Asociado");
     $asociado = $asociado_repo->find($id);
+    
+    $familiares_repo = $em->getRepository("ModeloBundle:Familiar");
+    $familiares = $familiares_repo->findBy(array("idasociado"=>$id));
+
+    $equipos_repo = $em->getRepository("ModeloBundle:JugadorEquipo");
+    $equipos = $equipos_repo->findBy(array("idasociado"=>$id));
+
     return $this->render("ModeloBundle:Asociado:detail.html.twig", array(
-                    "asociado" => $asociado
+                    "asociado" => $asociado,
+                    "familiares" => $familiares,
+                    "equipos" => $equipos
+        
         ));
     }
     
@@ -221,7 +240,7 @@ class AsociadoController extends Controller {
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $query, $request->query->getInt('page', 1), 5
+                $query, $request->query->getInt('page', 1), 10
         );
         
         return $this->render("ModeloBundle:Asociado:index.html.twig", array(

@@ -12,9 +12,7 @@
     <div class="row">
         <!-- Welcome -->
         <div class="col-lg-12">
-            <a href="{{path("asociado_add")}}" class="btn btn-success">
-                <span class="fa fa-plus"></span> 
-            </a>
+            
             <a href="#" class="btn btn-success">
                 <span class="fa fa-print"></span> 
             </a>
@@ -30,9 +28,9 @@
         
     <div class="row">
         <div class="col-lg-12">
-            <form action="{{ path("asociado_search") }}">
+            <form action="{{ path("familiar_search") }}">
                 <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" placeholder="Buscar Asociados" name="search">
+                    <input type="text" class="form-control" placeholder="Buscar Familiar" name="search">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="submit" aria-hidden="true">
                             <i class="fa fa-search"></i>
@@ -62,6 +60,7 @@
                                     <th>Cedula</th>
                                     <th>Codigo</th>
                                     <th>Accion</th>
+                                    <th>Asociado</th>
                                     <th>Ingreso</th>
                                     <th>Carnet</th>
                                     <th>Detalle</th>
@@ -70,15 +69,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for asociado in pagination %}
+                                {% for familiar in pagination %}
                                     <tr>
-                                        <td>{{ asociado.nombres }} </td>
-                                        <td>{{ asociado.apellidos }} </td>
-                                        <td>{{ asociado.cedula }} </td>
-                                        <td>{{ asociado.codigo }} </td>
-                                        <td>{{ asociado.idsocio.accion }} </td>
+                                        <td>{{ familiar.nombres }} </td>
+                                        <td>{{ familiar.apellidos }} </td>
+                                        {% if familiar.cedula == null %}
+                                        <td>Sin Cedula</td>
+                                        {% else %}    
+                                        <td>{{ familiar.cedula }} </td>
+                                        {% endif %}
+                                        <td>{{ familiar.codigo }} </td>
+                                        {% if familiar.idsocio != null %}
+                                        <td>{{ familiar.idsocio.accion }} </td>
+                                        {% else %}
+                                        <td>{{ familiar.idasociado.idsocio.accion }} </td>
+                                        {% endif %}
+                                        
+                                        {% if familiar.idasociado != null %}
+                                        <td>{{ familiar.idasociado.numasociado }} </td>
+                                        {% else %}
+                                        <td>N/A</td>
+                                        {% endif %} 
                                         <td>
-                                            {% if asociado.solvente %}
+                                            {% if familiar.solvente %}
                                                 <a href="#" class="btn btn-success btn-sm disabled">
                                                     <span class="fa fa-check"></span> 
                                                 </a>
@@ -89,27 +102,35 @@
                                             {% endif %}                                    
                                         </td>
                                         <td> 
-                                                {% if asociado.emision == null %}
-                                                <a href="{{path("asociado_card",{"id":asociado.id})}}" class="btn btn-success btn-sm">
+                                                {% if familiar.emision == null %}
+                                                <a href="{{path("familiar_card",{"id":familiar.id})}}" class="btn btn-success btn-sm">
                                                 <span class="fa fa-key"> Emitir</span>
                                                 {% else %}
-                                                <a href="{{path("asociado_card",{"id":asociado.id})}}" class="btn btn-info btn-sm">
+                                                <a href="{{path("familiar_card",{"id":familiar.id})}}" class="btn btn-info btn-sm">
                                                 <span class="fa fa-key"> Renovar</span>
                                                 {% endif %}
                                             </a>
                                         </td>
                                         <td> 
-                                            <a href="{{path("asociado_detail",{"id":asociado.id})}}" class="btn btn-info btn-sm">
+                                            <a href="{{path("familiar_detail",{"id":familiar.id})}}" class="btn btn-info btn-sm">
                                                 <span class="fa fa-user"></span> 
                                             </a>
                                         </td>
+                                        {% if familiar.idsocio != null %}
+                                            <td>
+                                                <a href="{{path("familiar_update",{"relacion":1,"id":familiar.id})}}" class="btn btn-warning btn-sm">
+                                                    <span class="fa fa-pencil"></span> 
+                                                </a>
+                                            </td>
+                                        {% else %}
+                                            <td>
+                                                <a href="{{path("familiar_update",{"relacion":2,"id":familiar.id})}}" class="btn btn-warning btn-sm">
+                                                    <span class="fa fa-pencil"></span> 
+                                                </a>
+                                            </td>
+                                        {% endif %}              
                                         <td>
-                                            <a href="{{path("asociado_update",{"id":asociado.id})}}" class="btn btn-warning btn-sm">
-                                                <span class="fa fa-pencil"></span> 
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="{{path("asociado_delete",{"id":asociado.id})}}" class="btn btn-danger btn-sm">
+                                            <a href="{{path("familiar_delete",{"id":familiar.id})}}" class="btn btn-danger btn-sm">
                                                 <span class="fa fa-eraser"></span> 
                                             </a>
                                         </td>

@@ -12,6 +12,11 @@ modelo_homepage:
     path:     /dashboard
     defaults: { _controller: ModeloBundle:Default:index }
 
+email_test:
+    path:     /email-test
+    defaults: { _controller: ModeloBundle:Usuario:emailTest }
+    methods: [POST]
+
 app_card:
     resource: "@ModeloBundle/Resources/config/routing/card.yml"
     prefix: /card
@@ -54,5 +59,13 @@ app_departamento:
     
 app_cargo:
     resource: "@ModeloBundle/Resources/config/routing/cargo.yml"
-    prefix: /cargo 
+    prefix: /cargo
+    
+app_familiar:
+    resource: "@ModeloBundle/Resources/config/routing/familiar.yml"
+    prefix: /familiar
+    
+app_registro:
+    resource: "@ModeloBundle/Resources/config/routing/registro.yml"
+    prefix: /seguridad     
  

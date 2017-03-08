@@ -9,3 +9,8 @@ socio_card:
 empleado_card:
     path:     /empleado/{id}
     defaults: { _controller: ModeloBundle:Card:updateCardEmpleado } 
+    
+    
+familiar_card:
+    path:     /familiar/{id}
+    defaults: { _controller: ModeloBundle:Card:updateCardFamiliar }     

@@ -6,6 +6,9 @@
     <title>Club Latino</title>
     
     {% block scripts %}
+        <script type="text/javascript">
+        var URL = "{{ app.request.getSchemeAndHttpHost() }}//latino/web/app.php";
+        </script>    
     <!-- Core Scripts - Include with every page -->
     <script src="{{ asset('plugins/jquery-1.10.2.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap/bootstrap.min.js') }}"></script>
@@ -14,8 +17,7 @@
     <script src="{{ asset('scripts/siminta.js') }}"></script>
     <!-- Page-Level Plugin Scripts-->
     <script src="{{ asset('plugins/morris/raphael-2.1.0.min.js') }}"></script>
-    <script src="{{ asset('lugins/morris/morris.js') }}"></script>
-    <script src="{{ asset('scripts/dashboard-demo.js') }}"></script>
+    <script src="{{ asset('plugins/morris/morris.js') }}"></script>
     {% endblock %}
     
     {% block stylesheets %}
@@ -303,6 +305,18 @@
                         <a href="{{path("modelo_homepage")}}"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
                     </li>
                     <li>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Seguridad<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{{path("registro")}}">Entrada</a>
+                            </li>
+                            <li>
+                                <a href="#">Invitados</a>
+                            </li>
+                        </ul>
+                        <!-- second-level-items -->
+                    </li>
+                    <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Socios<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
@@ -346,6 +360,15 @@
                             </li>
                             <li>
                                 <a href="{{path("empleado_add")}}">Agregar</a>
+                            </li>
+                        </ul>
+                        <!-- second-level-items -->
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Familiar<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{{path("familiar")}}">Listar</a>
                             </li>
                         </ul>
                         <!-- second-level-items -->

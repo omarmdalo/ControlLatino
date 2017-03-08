@@ -48,6 +48,7 @@ class SocioController extends Controller {
                 $socio_repo = $em->getRepository("ModeloBundle:Socio");
                 $socio = $socio_repo->findOneBy(array("cedula" => $form->get("cedula")->getData()));
                 $codigo = "";
+                $edad=0;
                 if (count($socio) == 0) {
 
                     $socio = new Socio();
@@ -56,6 +57,10 @@ class SocioController extends Controller {
                     $socio->setApellidos($form->get("apellidos")->getData());
                     $socio->setCedula($form->get("cedula")->getData());
                     $socio->setNacimiento($form->get("nacimiento")->getData());
+                    
+                    $edad=$socio_repo->CalcularEdad($form->get("nacimiento")->getData(), new \DateTime("now"));
+                    $socio->setEdad($edad);
+                    
                     $socio->setRazonSocial($form->get("razonSocial")->getData());
                     $socio->setRif($form->get("rif")->getData());
                     
@@ -124,6 +129,39 @@ class SocioController extends Controller {
 
     public function deleteSocioAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
+        
+        $familiar_repo = $em->getRepository("ModeloBundle:Familiar");
+        $familiares = $familiar_repo->findBy(array("idsocio"=>$id));
+        if(count($familiares) > 0){
+        foreach ($familiares as $familiar){
+        $em->remove($familiar);
+        }
+        }
+        
+        $asociado_repo = $em->getRepository("ModeloBundle:Familiar");
+        $asociados = $asociado_repo->findBy(array("idsocio"=>$id));
+        if(count($asociados) > 0){
+        foreach ($asociados as $asociado){           
+            $aso_familiares = $familiar_repo->findBy(array("idsocio"=>$asociado->getId()));
+            if(count($aso_familiares) > 0){
+                foreach ($aso_familiares as $aso_familiar){
+                $em->remove($aso_familiar);
+                }          
+            }
+        $em->remove($asociado);
+        }
+        }
+        
+        
+        
+        $socio_equipo_repo = $em->getRepository("ModeloBundle:JugadorEquipo");
+        $socio_equipos = $socio_equipo_repo->findBy(array("idsocio"=>$id));
+        if(count($socio_equipos) > 0){
+        foreach ($socio_equipos as $socio_equipo){
+        $em->remove($socio_equipo);
+        }
+        }
+              
         $socio_repo = $em->getRepository("ModeloBundle:Socio");
         $socio = $socio_repo->find($id);
         $em->remove($socio);
@@ -154,6 +192,10 @@ class SocioController extends Controller {
                 $socio->setApellidos($form->get("apellidos")->getData());
                 $socio->setCedula($form->get("cedula")->getData());
                 $socio->setNacimiento($form->get("nacimiento")->getData());
+                
+                $edad=$socio_repo->CalcularEdad($form->get("nacimiento")->getData(), new \DateTime("now"));
+                $socio->setEdad($edad);
+                    
                 $socio->setRazonSocial($form->get("razonSocial")->getData());
                 $socio->setRif($form->get("rif")->getData());
                 
@@ -210,8 +252,21 @@ class SocioController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
         $socio_repo = $em->getRepository("ModeloBundle:Socio");
         $socio = $socio_repo->find($id);
+        
+        $asociados_repo = $em->getRepository("ModeloBundle:Asociado");
+        $asociados = $asociados_repo->findBy(array("idsocio"=>$id));
+        
+        $familiares_repo = $em->getRepository("ModeloBundle:Familiar");
+        $familiares = $familiares_repo->findBy(array("idsocio"=>$id));
+        
+        $equipos_repo = $em->getRepository("ModeloBundle:JugadorEquipo");
+        $equipos = $equipos_repo->findBy(array("idsocio"=>$id));
+        
         return $this->render("ModeloBundle:Socio:detail.html.twig", array(
-                    "socio" => $socio
+                    "socio" => $socio,
+                    "asociados" => $asociados,
+                    "familiares" => $familiares,
+                    "equipos" => $equipos
         ));
     }
     

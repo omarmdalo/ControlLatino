@@ -4,6 +4,7 @@ namespace ModeloBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use ModeloBundle\Entity\Usuario;
 use ModeloBundle\Form\UsuarioType;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -174,6 +175,25 @@ class UsuarioController extends Controller
         return $this->render("ModeloBundle:Asociado:index.html.twig", array(
                     "pagination" => $pagination
         ));
+    }
+    
+        public function emailTestAction(Request $request) {
+        
+            //Recibimos por POST
+            $email = $request->get("email");
+            
+            //Comprobamos con la BD
+            $em = $this->getDoctrine()->getEntityManager();
+            $usuario_repo = $em->getRepository("ModeloBundle:Usuario");
+            $usuario_isset = $usuario_repo->findOneBy(array("email" => $email));
+            
+            if(count($usuario_isset)>= 1 && is_object($usuario_isset)){
+                $result = "Usado";
+            }else{
+                $result = "No Usado";
+            }
+        
+            return new Response($result);
     }
 }
 

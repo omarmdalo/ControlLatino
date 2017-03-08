@@ -1,6 +1,7 @@
 ModeloBundle\Entity\Familiar:
     type: entity
     table: familiar
+    repositoryClass: ModeloBundle\Repository\FamiliarRepository
     indexes:
         idSocio:
             columns:
@@ -73,6 +74,11 @@ ModeloBundle\Entity\Familiar:
             nullable: true
             options:
                 comment: 'fecha emision'
+        solvente:
+            type: boolean
+            nullable: false
+            options:
+                comment: 'Campo Logico de Solvencia'        
         vencimiento:
             type: date
             nullable: true

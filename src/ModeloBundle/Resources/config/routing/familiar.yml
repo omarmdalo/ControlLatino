@@ -1,0 +1,23 @@
+familiar:    
+    path:     /list
+    defaults: { _controller: ModeloBundle:Familiar:index }
+
+familiar_add:    
+    path:     /add/{relacion}/{id}
+    defaults: { _controller: ModeloBundle:Familiar:addFamiliar }
+
+familiar_update:
+    path:     /update/{relacion}/{id}
+    defaults: { _controller: ModeloBundle:Familiar:updateFamiliar } 
+    
+familiar_delete:
+    path:     /delete/{id}
+    defaults: { _controller: ModeloBundle:Familiar:deleteFamiliar }
+
+familiar_detail:
+    path:     /detalle/{id}
+    defaults: { _controller: ModeloBundle:Familiar:detailFamiliar }
+    
+familiar_search:    
+    path:     /search
+    defaults: { _controller: ModeloBundle:Familiar:search }

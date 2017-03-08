@@ -1,107 +1,363 @@
 {% extends "ModeloBundle::layout.html.twig" %}
 {% block content %}
-    
-    <div class="row">
-        <!-- Page Header -->
+
+    <!-- Cabecera -->
+    <div class="row">       
         <div class="col-lg-12">
             <h1 class="page-header"></h1>
         </div>
-        <!--End Page Header -->
     </div>
-    
-    <div class="row">
-                <!-- Welcome -->
+
+    <!-- Opciones ficha de Socio -->    
+    <div class="row">                
         <div class="col-lg-12">
             <a href="{{path("socios")}}">
-                    <button type="button" class="btn btn-success">Socios</button> 
+                <button type="button" class="btn btn-success">Socios</button> 
             </a>
             <a href="{{path("socio_update",{"id":socio.id})}}">
-                    <button type="button" class="btn btn-warning">Editar</button> 
+                <button type="button" class="btn btn-warning">Editar</button> 
             </a>
             <a href="{{path("socio_delete",{"id":socio.id})}}">
-                    <button type="button" class="btn btn-danger">Eliminar</button>
+                <button type="button" class="btn btn-danger">Eliminar</button>
             </a>
             <a href="#">
-                    <button type="button" class="btn btn-info">Imprimir</button>
+                <button type="button" class="btn btn-info">Imprimir</button>
             </a>            
             <hr/>
-        </div>
-                <!--end  Welcome -->
-    </div>    
+        </div>                
+    </div>
+
+    <!-- Ficha de Asociados Acordeon -->                    
     <div class="row">
         <div class="col-lg-12">
-            <!--Area chart example -->
+            <!--Collapsible Accordion Panel Group   -->
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-book"></i>Ficha del Socio                    
+                    Ficha Socio
                 </div>
                 <div class="panel-body">
-                    <div class="row">
-                    <div class="col-lg-12">
-                        <img width="200" src="{{ asset("uploads/socios/"~socio.imagen) }}"
+                    <!-- Inicio Grupo Panel --> 
+                    <div class="panel-group" id="accordion">
+                        
+                        <!-- Panel Datos Asociado   -->
+                        <div class="panel panel-default">
+                            
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Datos del Socio</a>
+                                </h4>
+                            </div>
+                            
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+
+                                    <div class="row">
+                                        
+                                        <div class="col-lg-12">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <img width="100" src="{{ asset("uploads/socios/"~socio.imagen) }}">
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="col-lg-6">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Nombres</span>                     
+                                                    <input type="text" class="form-control" value="{{socio.nombres}}" disabled>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Apellidos</span>
+                                                    <input type="text" class="form-control" value="{{socio.apellidos}}" disabled>
+                                                </li>                       
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Cedula</span>
+                                                    <input type="text" class="form-control" value="{{socio.cedula}}" disabled>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Fecha Nacimiento</span>
+                                                    <input type="text" class="form-control" value="{{socio.nacimiento | date('Y-m-d')}}" disabled>
+                                                </li>
+                                            </ul>
+                                        </div>  
+                                                
+                                        <div class="col-lg-6">                          
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Edad</span>
+                                                    <input type="text" class="form-control" value="{{socio.edad}}" disabled>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Razon Social</span>
+                                                    {% if socio.razonSocial == null %}
+                                                    <input type="text" class="form-control" value="N/A" disabled>
+                                                    {% else %}
+                                                    <input type="text" class="form-control" value="{{socio.razonSocial}}" disabled>
+                                                    {% endif %}
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">RIF</span>
+                                                    {% if socio.rif == null %}
+                                                    <input type="text" class="form-control" value="N/A" disabled>
+                                                    {% else %}
+                                                    <input type="text" class="form-control" value="{{socio.rif}}" disabled>
+                                                    {% endif %}
+                                                </li>
+                                            </ul>
+                                        </div>  
+                                                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                        <!-- Fin Panel Datos Asociado   -->
+                        
+                        
+                        
+                        
+                        <!-- Panel Registro   -->
+                        <div class="panel panel-default">
+                            
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Datos Registro</a>
+                                </h4>
+                            </div>
+                            
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+
+                                    <div class="row">
+                                                                               
+                                        <div class="col-lg-6">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Fecha registro</span>                     
+                                                    <input type="text" class="form-control" value="{{socio.registro | date('Y-m-d')}}" disabled>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Fecha Actualizacion</span>
+                                                    <input type="text" class="form-control" value="{{socio.actualizado | date('Y-m-d')}}" disabled>
+                                                </li>                       
+                                            </ul>
+                                        </div>  
+                                                
+                                        <div class="col-lg-6">                          
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <span class="input-group-addon">Numero de Accion</span>
+                                                    <input type="text" class="form-control" value="{{socio.accion}}" disabled>
+                                                </li>
+                                            </ul>
+                                        </div>  
+                                                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                        <!-- Fin Panel Datos Asociado   -->                        
+                        
+                        <!-- Panel Datos Propietario Accion   -->                     
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Datos Carnet</a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="panel-body">
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">
+                                                        <span class="input-group-addon">Fecha emision</span>
+                                                        {% if socio.emision == null %}
+                                                            <input type="text" class="form-control" value="No Emitido" disabled>
+                                                        {% else %}
+                                                            <input type="text" class="form-control" value="{{socio.emision | date('Y-m-d')}}" disabled>
+                                                        {% endif %}   
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <span class="input-group-addon">Fecha vencimiento</span>
+                                                        {% if socio.vencimiento == null %}
+                                                        <input type="text" class="form-control" value="No Emitido" disabled>    
+                                                        {% else %}
+                                                        <input type="text" class="form-control" value="{{socio.vencimiento | date('Y-m-d')}}" disabled>
+                                                        {% endif %}
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <span class="input-group-addon">Ingreso</span>                                                                            
+                                                        {% if socio.solvente %}
+                                                            <input type="text" class="form-control" value="Permitido" disabled>
+                                                        {% else %}
+                                                            <input type="text" class="form-control" value="Suspendido" disabled>
+                                                        {% endif %} 
+                                                    </li>
+                                                </ul>
+                                            </div>    
+                                            <div class="col-lg-6">                          
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">
+                                                        <span class="input-group-addon">Codigo Nuevo</span>
+                                                        <input type="text" class="form-control" value="{{socio.codigo}}" disabled>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <span class="input-group-addon">Codigo Anterior</span>                                                                            
+                                                        {% if socio.old == null %}
+                                                            <input type="text" class="form-control" value="N/A" disabled>
+                                                        {% else %}
+                                                            <input type="text" class="form-control" value="{{socio.old}}" disabled>
+                                                        {% endif %} 
+                                                    </li>    
+                                                </ul>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin Panel Propietario Accion   -->
+                        
+                        <!-- Panel Carnet   -->                     
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Familiares</a>
+                                </h4>
+                            </div>
+                            <div id="collapseFour" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Nombres</th>
+                                                                <th>Apellidos</th>
+                                                                <th>Cedula</th>
+                                                                <th>Edad</th>                            
+                                                                <th>Tipo</th> 
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for familiar in familiares %}                                                                
+                                                                <tr>
+                                                                    <td>{{ familiar.nombres }} </td>
+                                                                    <td>{{ familiar.apellidos }} </td>
+                                                                    <td>{{ familiar.cedula }} </td>
+                                                                    <td>{{ familiar.edad }} </td>
+                                                                    <td>{{ familiar.idtipofamiliar.nombre }} </td> 
+                                                                </tr>
+                                                            {% endfor %}                                
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>    
+                                        </div>              
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin Panel Datos Juridicos   --> 
+                        
+                        <!-- Panel Datos Asociado   -->                        
+                        <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Asociados</a>
+                            </h4>
+                        </div>
+                        <div id="collapseFive" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nombres</th>
+                                                            <th>Apellidos</th>
+                                                            <th>Cedula</th>
+                                                            <th>Edad</th>                            
+                                                            <th>Numero Asociado</th> 
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% for asociado in asociados %}                                                                
+                                                            <tr>
+                                                                <td>{{ asociado.nombres }} </td>
+                                                                <td>{{ asociado.apellidos }} </td>
+                                                                <td>{{ asociado.cedula }} </td>
+                                                                <td>{{ asociado.edad }} </td>
+                                                                <td>{{ asociado.numasociado }} </td> 
+                                                            </tr>
+                                                        {% endfor %}                                
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                </div>              
+                            </div>
+                        </div>
+                        </div>
+                        <!-- Fin Panel Datos Asociado   -->
+                        
+                        <!-- Panel Datos Asociado   -->                        
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">Equipos</a>
+                                </h4>
+                            </div>
+                            <div id="collapseSix" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Nombre</th>
+                                                                <th>Campeonato</th>
+                                                                <th>Disciplina</th> 
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for equipo in equipos %}                                                                
+                                                                <tr>
+                                                                    <td>{{ equipo.idequipo.nombre }} </td>
+                                                                    <td>{{ equipo.idequipo.idcampeonato.nombre }} </td>
+                                                                    <td>{{ equipo.idequipo.idcampeonato.iddisciplina.nombre }} </td>
+                                                                </tr>
+                                                            {% endfor %}                                
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                    </div>              
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin Panel Datos Asociado   -->
+
+
                     </div>
-                    </div> 
-                    <div class="col-lg-6">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <span class="input-group-addon">Nombres</span>                     
-                            <input type="text" class="form-control" value="{{socio.nombres}}" disabled>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="input-group-addon">Apellidos</span>
-                            <input type="text" class="form-control" value="{{socio.apellidos}}" disabled>
-                        </li>                       
-                        <li class="list-group-item">
-                            <span class="input-group-addon">Cedula</span>
-                            <input type="text" class="form-control" value="{{socio.cedula}}" disabled>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="input-group-addon">Codigo Barras</span>
-                            <input type="text" class="form-control" value="{{socio.codigo}}" disabled>
-                        </li>
-                        {% if socio.old != null %}
-                        <li class="list-group-item">
-                            <span class="input-group-addon">Codigo Barras Antiguo</span>
-                            <input type="text" class="form-control" value="{{socio.old}}" disabled>
-                        </li>
-                        {% endif%}  
-                    </ul>
-                    </div>    
-                    <div class="col-lg-6">                          
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <span class="input-group-addon">Tipo de Socio</span>
-                            <input type="text" class="form-control" value="{{socio.idtiposocio.nombre}}" disabled>
-                        </li>
-                        {% if socio.idtiposocio.id == 1 %}
-                        <li class="list-group-item">
-                            <span class="input-group-addon">Razon Social</span>
-                            <input type="text" class="form-control" value="{{socio.razonSocial}}" disabled>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="input-group-addon">RIF</span>
-                        <input type="text" class="form-control" value="{{socio.rif}}" disabled>
-                        </li>
-                        {% endif%}
-                        <li class="list-group-item">
-                            <span class="input-group-addon">Accion</span>
-                        <input type="text" class="form-control" value="{{socio.accion}}" disabled>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="input-group-addon">Estado de Ingreso</span>
-                            {% if socio.solvente %}
-                                    <input type="text" class="form-control" value="Permitido" disabled>
-                            {% else %}
-                                    <input type="text" class="form-control" value="Suspendido" disabled>
-                            {% endif %} 
-                        </li>
-                    </ul>
-                    </div>
-                </div>
+                    <!--Fin Grupo Panel -->                              
+                </div>                        
             </div>
-            <!--End area chart example -->
         </div>
     </div>
-    
+                                            
+
+
+
+
+
+
     <div class="clearfix"></div>    
 {% endblock %}

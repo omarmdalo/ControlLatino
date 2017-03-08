@@ -56,6 +56,11 @@ class Familiar
      * @var \DateTime
      */
     private $vencimiento;
+    
+    /**
+     * @var boolean
+     */
+    private $solvente;
 
     /**
      * @var string
@@ -313,7 +318,31 @@ class Familiar
     {
         return $this->vencimiento;
     }
+    
+    /**
+     * Set solvente
+     *
+     * @param boolean $solvente
+     *
+     * @return Asociado
+     */
+    public function setSolvente($solvente)
+    {
+        $this->solvente = $solvente;
 
+        return $this;
+    }
+
+    /**
+     * Get solvente
+     *
+     * @return boolean
+     */
+    public function getSolvente()
+    {
+        return $this->solvente;
+    }
+    
     /**
      * Set imagen
      *

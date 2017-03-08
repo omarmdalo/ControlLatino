@@ -7,9 +7,11 @@ use Symfony\Component\HttpFoundation\Request;
 use ModeloBundle\Entity\Asociado;
 use ModeloBundle\Entity\Socio;
 use ModeloBundle\Entity\Empleado;
+use ModeloBundle\Entity\Familiar;
 use ModeloBundle\Form\CardAsociadoType;
 use ModeloBundle\Form\CardSocioType;
 use ModeloBundle\Form\CardEmpleadoType;
+use ModeloBundle\Form\CardFamiliarType;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Validator\Constraints\Length;
 
@@ -96,7 +98,7 @@ class CardController extends Controller {
 
     }
 
-        public function updateCardEmpleadoAction(Request $request, $id){
+    public function updateCardEmpleadoAction(Request $request, $id){
        
         $em = $this->getDoctrine()->getEntityManager();
         $empleado_repo = $em->getRepository("ModeloBundle:Empleado");
@@ -131,5 +133,44 @@ class CardController extends Controller {
                     "datos" => $empleado
         ));
 
-    }    
+    }
+
+    public function updateCardFamiliarAction(Request $request, $id){
+       
+        $em = $this->getDoctrine()->getEntityManager();
+        $familiar_repo = $em->getRepository("ModeloBundle:Familiar");
+        $familiar = $familiar_repo->find($id);
+        $form = $this->createForm(CardFamiliarType::class, $familiar);        
+        $form->handleRequest($request);        
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                
+                    //Fecha de Emision y Vencimiento Carnet
+                    $familiar->setEmision($form->get("emision")->getData());
+                    $familiar->setVencimiento($form->get("vencimiento")->getData());                   
+                    //Hora Actualizacion
+                    $familiar->setActualizacion(new \DateTime("now"));
+                                         
+                    $em->persist($familiar);
+                    $flush = $em->flush();
+
+                    if ($flush == null) {
+                        $status = "Carnet Actualizado Correctamente";
+                    } else {
+                        $status = "Carnet no fue actualizado";
+                    }
+                }else {
+                $status = "Formulario Incorrecto";
+                }
+            $this->session->getFlashBag()->add("status", $status);
+            return $this->redirectToRoute("familiar");
+        }       
+        return $this->render("ModeloBundle:Carnet:update.html.twig", array(
+                    "form" => $form->createView(),
+                    "datos" => $familiar
+        ));
+
+    }
+
+    
 }

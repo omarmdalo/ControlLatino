@@ -59,6 +59,11 @@
         <option name="comment">vencimiento</option>
       </options>
     </field>
+    <field name="solvente" type="boolean" column="solvente" nullable="false">
+      <options>
+        <option name="comment">Campo Logico de Solvencia</option>
+      </options>
+    </field>
     <field name="imagen" type="string" column="imagen" length="255" nullable="true">
       <options>
         <option name="fixed"/>

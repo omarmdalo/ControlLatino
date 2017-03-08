@@ -1,4 +1,10 @@
 {% extends "ModeloBundle::layout.html.twig" %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="{{ asset('scripts/emailtest.js') }}"></script>
+{% endblock %}    
+
 {% block content %}
     
     <div class="row">

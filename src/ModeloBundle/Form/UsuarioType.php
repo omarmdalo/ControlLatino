@@ -36,7 +36,7 @@ class UsuarioType extends AbstractType
                     "class"=>"form-control"
                 )))
                 ->add('email',EmailType::class, array("label"=>"Correo Electronico","required"=>"required", "attr"=> array(
-                "class"=>"form-control"
+                "class"=>"form-control email"
                 )))
                 ->add('password', PasswordType::class, array("label"=>"Contraseña","required"=>"required", "attr"=> array(
                 "class"=>"form-control"

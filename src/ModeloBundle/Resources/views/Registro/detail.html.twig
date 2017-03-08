@@ -1,0 +1,140 @@
+{% extends "ModeloBundle::layout.html.twig" %}
+{% block content %}
+
+    <!-- Cabecera -->
+    <div class="row">       
+        <div class="col-lg-12">
+            <h1 class="page-header"></h1>
+        </div>
+    </div>
+    
+    <div class="row">                
+        <div class="col-lg-12">
+            <a href="{{path("registro")}}">
+                <button type="button" class="btn btn-success">Registrar</button> 
+            </a>           
+            <hr/>
+            {% for message in app.session.flashbag().get('status') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %} 
+        </div>                
+    </div>
+
+    <!-- Ficha de Asociados Acordeon -->                    
+    <div class="row">
+        <!--Default Pannel, Primary Panel And Success Panel   -->
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Informacion Socio
+                </div>
+                <div class="panel-body">
+                    <div class="col-lg-4">
+                    <img width="100" src="{{ asset("uploads/socios/"~data.imagen) }}">
+                    </div>
+                    <div class="col-lg-6">
+                    <p><b>Nombres: </b>{{data.nombres}}</p>
+                    <p><b>Apellidos: </b>{{data.apellidos}}</p>                   
+                    <p><b>Cedula: </b>{{data.cedula}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <!--    Striped Rows Table  -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Invitados
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Motivo</th>
+                                    <th>Fecha</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Cedula</th>                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Piscina</td>
+                                    <td>17/10/2017</td>
+                                    <td>Omar</td>
+                                    <td>Maldonado</td>
+                                    <td>V18391560</td>
+                                </tr>
+                                <tr>
+                                    <td>Piscina</td>
+                                    <td>17/10/2017</td>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>V17489456</td>
+                                </tr>
+                                <tr>
+                                    <td>Piscina</td>
+                                    <td>17/10/2017</td>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>V18231474</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--  End  Striped Rows Table  -->
+        </div>
+        <!--End Default Pannel, Primary Panel And Success Panel   -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <!--    Striped Rows Table  -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Juegos Deportivos
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Fecha y Hora</th>
+                                    <th>Equipo</th>
+                                    <th>Campeonato</th>
+                                    <th>Lugar</th>
+                                    <th>Disciplina</th>                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for juego in juegos %}
+                                <tr>
+                                    <td>{{juego.fechaju|date('Y-m-d H:i:s')}}</td>
+                                    <td>{{juego.nombre_eq}}</td>
+                                    <td>{{juego.nombre_ca}}</td>
+                                    <td>{{juego.nombre_ca}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--  End  Striped Rows Table  -->
+        </div>
+    </div>
+               
+
+
+
+
+
+
+
+
+    <div class="clearfix"></div>    
+{% endblock %}
